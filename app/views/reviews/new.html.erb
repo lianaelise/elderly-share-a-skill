@@ -5,6 +5,5 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <%= f.input :body %>
-  <%= f.input :rating, collection: 0..5 %>
   <%= f.submit "Add Review", class: "btn btn-primary" %>
 <% end %>
