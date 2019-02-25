@@ -1,10 +1,15 @@
 class AfterSignupController < ApplicationController
   include Wicked::Wizard
 
-  steps :confirm_type, :confirm_first_name, :confirm_last_name, :confirm_phone_number, :confirm_address, :confirm_bio, :confirm_picture, :confirm_skill
+  steps :confirm_type, :confirm_first_name, :confirm_last_name, :confirm_phone_number, :confirm_address, :confirm_bio, :confirm_picture, :confirm_subject, :confirm_skill
 
   def show
     @user = current_user
+    case step
+    when :confirm_skill
+      @subjects = Subject.where(id: params[:subjects])
+      @skills = @subjects.map { |subject| @user.skills.new(subject: subject) }
+    end
     # case step
     # when :find_friends
     #   @friends = @user.find_friends
@@ -14,8 +19,13 @@ class AfterSignupController < ApplicationController
 
   def update
     @user = current_user
-    @user.update_attributes(wizard_params)
-
+    case step
+    when :confirm_subject
+      sign_in(@user, bypass: true)
+      jump_to(:confirm_skill, subjects: params[:subjects])
+    else
+      @user.update_attributes(wizard_params)
+    end
     # case step
     # when :confirm_type
     #   @user.update_attributes(params[:user])
@@ -42,10 +52,14 @@ class AfterSignupController < ApplicationController
   end
 
   def teacher_params
-    params.require(:teacher).permit(:first_name, :last_name, :phone_number, :address, :email, :bio, :picture)
+    params.require(:teacher).permit(
+      :first_name, :last_name, :phone_number, :address, :email, :bio, :picture,
+      skills_attributes: [:id, :name, :subject_id, :_destroy]
+    )
   end
 
   def student_params
       params.require(:student).permit(:first_name, :last_name, :phone_number, :address, :email, :bio, :picture)
   end
+
 end
