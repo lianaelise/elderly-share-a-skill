@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
 
   resources :teachers, only: [:index, :show] do
+    collection do
+      get 'profile'
+    end
     resources :reviews, only: [:new, :create]
     resources :skills do
     resources :subjects
@@ -15,6 +18,9 @@ Rails.application.routes.draw do
   end
 
   resources :students, only: [:show] do
+    collection do
+      get 'profile'
+    end
     resources :reviews, only: [:new, :create]
   end
   resources :appointments do
