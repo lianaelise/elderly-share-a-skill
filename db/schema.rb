@@ -27,15 +27,14 @@ ActiveRecord::Schema.define(version: 2019_02_24_150406) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string "reviewer_type"
-    t.bigint "reviewer_id"
     t.integer "reviewee_id"
+    t.integer "reviewer_id"
     t.text "body"
     t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["reviewee_id"], name: "index_reviews_on_reviewee_id"
-    t.index ["reviewer_type", "reviewer_id"], name: "index_reviews_on_reviewer_type_and_reviewer_id"
+    t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
   end
 
   create_table "skills", force: :cascade do |t|
