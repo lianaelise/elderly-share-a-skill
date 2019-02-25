@@ -6,8 +6,14 @@
   <p>Email: <%= @teacher.email %></p>
   <p>Phone: <%= @teacher.phone_number %></p>
 
-  <!-- Reviews -->
 
+<h3>Skills:</h3>
+<% @teacher.skills.each do |skill| %>
+  <li><%= skill.subject.name %> - <%= skill.name %></li>
+<% end %>
+
+
+<!-- Reviews -->
   <h2> Comments </h2>
     <% @reviews = Review.where(reviewee_id: @teacher.id) %>
     <% if @reviews.count > 0 %>
