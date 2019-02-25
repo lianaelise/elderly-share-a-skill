@@ -1,0 +1,5 @@
+<%= form_for @user, url: wizard_path, method: :put do |f| %>
+  <%= f.select :type, ["Student", "Teacher"] %>
+  <%= f.submit "Submit" %>
+<% end %>
+<%= link_to 'skip', wizard_path(:confirm_first_name) %>
