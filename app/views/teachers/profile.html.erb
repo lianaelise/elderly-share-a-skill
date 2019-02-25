@@ -1,1 +1,20 @@
-<h1>Teachers Profile</h1>
+  <h1>Teacher: <%= @teacher.first_name %> <%= @teacher.last_name %> </h1>
+
+   <% if @teacher.picture.present? %>
+    <%=  cl_image_tag @teacher.picture, width:200, height: 200, :crop=>"fill" %>
+ <% end %>
+
+  <p>Address: <%= @teacher.address %></p>
+  <p>Bio: <%= @teacher.bio %></p>
+  <p>Email: <%= @teacher.email %></p>
+  <p>Phone: <%= @teacher.phone_number %></p>
+
+  <h3>Skills:</h3>
+  <% @teacher.skills.each do |skill| %>
+    <li><%= skill.subject.name %> - <%= skill.name %></li>
+  <% end %>
+<ul class="list-inline">
+  <li class="list-inline-item">
+    <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary" %>
+  </li>
+</ul>
