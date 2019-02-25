@@ -1,1 +1,22 @@
-<h1>Student profile</h1>
+<h1><%= @student.first_name %> <%= @student.last_name %> profile</h1>
+
+ <% if @student.picture.present? %>
+    <%=  cl_image_tag @student.picture, width:200, height: 200, :crop=>"fill" %>
+ <% end %>
+
+ <p><%= @student.bio %></p>
+ <p><%= @student.address %></p>
+ <p> <%= @student.phone_number %> </p>
+ <p> <%= @student.email %> </p>
+
+<!-- edit button-->
+<ul class="list-inline">
+  <li class="list-inline-item">
+    <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary" %>
+  </li>
+</ul>
+
+
+
+
+
