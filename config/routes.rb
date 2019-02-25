@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   devise_for :users
-
+  resources :after_signup
   resources :teachers, only: [:index, :show] do
     resources :skills do
     resources :subjects
