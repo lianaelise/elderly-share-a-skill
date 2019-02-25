@@ -1,12 +1,26 @@
-<h1>Teacher: <%= @teacher.first_name %> <%= @teacher.last_name %> </h1>
+<div class="container">
+  <h1>Teacher: <%= @teacher.first_name %> <%= @teacher.last_name %> </h1>
 
-<p>Address: <%= @teacher.address %></p>
-<p>Bio: <%= @teacher.bio %></p>
-<p>Email: <%= @teacher.email %></p>
-<p>Phone: <%= @teacher.phone_number %></p>
+  <p>Address: <%= @teacher.address %></p>
+  <p>Bio: <%= @teacher.bio %></p>
+  <p>Email: <%= @teacher.email %></p>
+  <p>Phone: <%= @teacher.phone_number %></p>
 
-<p><%= link_to 'Back', teachers_path %></p>
-<p>---</p>
-<p><%= link_to 'Write a review!', new_teacher_review_path(@teacher) %></p>
+  <!-- Reviews -->
 
+  <h2> Comments </h2>
+    <% @reviews = Review.where(reviewee_id: @teacher.id) %>
+    <% if @reviews.count > 0 %>
+      <% @reviews.each do |review| %>
+        <p> <%= review.body %> </p>
+      <% end %>
+    <% else %>
+      <p> Share the love and say something great about <%= @teacher.first_name.capitalize %>!</p>
+    <% end %>
 
+<!-- Navigation Buttons -->
+
+  <p><%= link_to 'Back', teachers_path, class: "btn btn-primary" %></p>
+  <p>---</p>
+  <p><%= link_to 'Write a review!', new_teacher_review_path(@teacher), class: "btn btn-primary" %></p>
+</div>
