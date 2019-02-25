@@ -1,4 +1,7 @@
-<%= form_for @user, url: wizard_path, method: :put do |f| %>
-  <%= f.text_field :phone_number%>
-  <%= f.submit "Submit" %>
-<% end %>
+<div class="container text-center">
+  <h1 class="form-heading">What is your phone number?</h1>
+  <%= form_for @user, url: wizard_path, method: :put do |f| %>
+    <%= f.text_field :phone_number%>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+</div>

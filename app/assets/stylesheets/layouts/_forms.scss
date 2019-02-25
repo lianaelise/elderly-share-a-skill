@@ -1,0 +1,33 @@
+.btn-primary {
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.form-heading {
+  margin: 50px 0px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+select {
+  -webkit-appearance: none;
+  background-color: $light-gray;
+  border-bottom-color: $blue;
+  border-width: 0px 0px 3px 0px;
+  border-radius: 0px;
+  padding: 0px 40px;
+  font-size: 24px;
+}
+
+input {
+  -webkit-appearance: none;
+  background-color: $light-gray;
+  border-bottom-color: $blue;
+  border-width: 0px 0px 3px 0px;
+  border-radius: 0px;
+  padding: 0px 40px;
+  font-size: 24px;
+}
