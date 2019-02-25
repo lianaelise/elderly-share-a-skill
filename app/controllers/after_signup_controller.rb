@@ -1,5 +1,6 @@
 class AfterSignupController < ApplicationController
   include Wicked::Wizard
+
   steps :confirm_type, :confirm_first_name, :confirm_last_name, :confirm_phone_number, :confirm_email, :confirm_address, :confirm_bio
 
   def show
@@ -7,8 +8,7 @@ class AfterSignupController < ApplicationController
     # case step
     # when :find_friends
     #   @friends = @user.find_friends
-    # en
-
+    # end
     render_wizard
   end
 
@@ -21,7 +21,6 @@ class AfterSignupController < ApplicationController
     #   @user.update_attributes(params[:user])
     # end
     sign_in(@user, bypass: true) # needed for devise
-
     render_wizard @user
   end
 
