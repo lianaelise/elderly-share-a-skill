@@ -1,4 +1,5 @@
 <%= form_for @user, url: wizard_path, method: :put do |f| %>
-  <%= f.file_field(:picture) %>
+  <%= f.input :picture %>
+  <%= f.input :picture_cache, as: :hidden %>
   <%= f.submit "Submit" %>
 <% end %>
