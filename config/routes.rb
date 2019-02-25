@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   root to: 'pages#home'
+
+
+  resources :after_signup
+
   devise_for :users, controllers: { registrations: 'registrations' }
 
   resources :teachers, only: [:index, :show] do
@@ -18,6 +22,5 @@ Rails.application.routes.draw do
       get 'my-appointments'
     end
   end
-  resources :after_signup
 
 end

@@ -1,25 +1,24 @@
 class AfterSignupController < ApplicationController
   include Wicked::Wizard
 
-  steps :confirm_type, :confirm_first_name, :confirm_last_name, :confirm_phone_number, :confirm_email
+  steps :confirm_type, :confirm_first_name, :confirm_last_name, :confirm_phone_number, :confirm_email, :confirm_address, :confirm_bio
 
   def show
     @user = current_user
-  # case step
-  # when :confirm_first_name
-  #   @user = @user.first_name
-  # end
+    # case step
+    # when :find_friends
+    #   @friends = @user.find_friends
+    # end
     render_wizard
   end
 
   def update
     @user = current_user
     @user.update_attributes(wizard_params)
+
     # case step
     # when :confirm_type
-    # @user.update_attributes(user_params)
-    # when :first_name
-    # @user = @user.first_name
+    #   @user.update_attributes(params[:user])
     # end
     sign_in(@user, bypass: true) # needed for devise
     render_wizard @user
@@ -34,8 +33,8 @@ class AfterSignupController < ApplicationController
     when "Student"
       student_params
     else
-    user_params
-  end
+      user_params
+    end
   end
 
   def user_params
@@ -43,10 +42,10 @@ class AfterSignupController < ApplicationController
   end
 
   def teacher_params
-    params.require(:teacher).permit(:type, :first_name)
+    params.require(:teacher).permit(:first_name, :last_name, :phone_number, :email)
   end
 
   def student_params
-    params.require(:student).permit(:type, :first_name)
+      params.require(:student).permit(:first_name, :last_name, :phone_number, :email)
   end
 end

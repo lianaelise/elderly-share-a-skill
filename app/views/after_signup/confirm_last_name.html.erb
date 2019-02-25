@@ -1,5 +1,4 @@
 <%= form_for @user, url: wizard_path, method: :put do |f| %>
-  <%= f.select :type, ["Student", "Teacher"] %>
+  <%= f.text_field :last_name %>
   <%= f.submit "Submit" %>
 <% end %>
-
