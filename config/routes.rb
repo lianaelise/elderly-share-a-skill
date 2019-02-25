@@ -4,18 +4,20 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
 
   resources :teachers, only: [:index, :show] do
+    resources :reviews, only: [:new, :create]
     resources :skills do
     resources :subjects
       end
   end
 
-  resources :students, only: [:show]
+  resources :students, only: [:show] do
+    resources :reviews, only: [:new, :create]
+  end
   resources :appointments do
     collection do
       get 'my-appointments'
     end
   end
-  resources :reviews
   resources :after_signup
 
 end
