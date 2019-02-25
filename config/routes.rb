@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   end
 
   resources :students, only: [:show]
-  resources :appointments
+  resources :appointments do
+    collection do
+      get 'my-appointments'
+    end
+  end
   resources :reviews
 
 end
