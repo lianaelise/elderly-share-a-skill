@@ -6,6 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts 'Destroying'
+
+Teacher.destroy_all
+Student.destroy_all
+Subject.destroy_all
+Skill.destroy_all
+
+puts 'completed'
+
+
 puts 'Creating teachers'
 user1 = Teacher.create(first_name:'Carlos', last_name:'Perez', email: 'carlos@gmail.com', password:'123456', address:'Calle Maestro Victoria, 2, 28013 Madrid, Spain
 
@@ -19,11 +29,6 @@ Student.create(first_name:'Linda', last_name:'Hill', email:'linda@gmail.com', pa
 Student.create(first_name:'Mary', last_name:'Lopez', email:'mary@gmail.com', password:'123456', address:'Klausner St 12, Tel Aviv-Yafo', phone_number:'054677575')
 Student.create(first_name:'Jeremy', last_name:'Foster', email:'jeremy@gmail.com', password:'123456', address:'Tagore St 30, Tel Aviv-Yafo', phone_number:'050484735')
 Student.create(first_name:'Emily', last_name:'Ward', email:'emily@gmail.com', password:'123456', address:'Whithaugh Park, Newcastleton TD9 0TY, UK', phone_number:'050484735')
-
-Skill.create(name:'Drawing',teacher_id:user1.id, subject_id:1)
-Skill.create(name:'Pâtisserie',teacher_id:user2.id, subject_id:2 )
-
-# user_id: user3.id
 
 puts 'Creatign Subject'
 sub1 = Subject.create(name: 'Art')
@@ -39,3 +44,7 @@ Subject.create(name: 'Philosophy')
 Subject.create(name: 'Sience')
 Subject.create(name: 'Writing')
 Subject.create(name: 'Others')
+
+Skill.create(name:'Drawing',teacher_id: user1.id, subject_id: sub1.id)
+Skill.create(name:'Pâtisserie',teacher_id:user2.id, subject_id: sub2.id)
+Skill.create(name:'Origami',teacher_id:user3.id, subject_id: sub3.id)
