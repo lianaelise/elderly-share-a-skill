@@ -51,8 +51,12 @@ class AppointmentsController < ApplicationController
   end
 
   def my_appointments
-    @appointments = Appointment.where(student_id: current_user.id)
-    raise
+    @user = current_user
+    if @user.type == "Student"
+      @appointments = Appointment.where(student_id: current_user.id)
+    else
+      @appointments = Appointment.where(teacher_id: current_user.id)
+    end
   #   # (teacher_id: current_user.id).or
   end
 
