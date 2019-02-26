@@ -8,8 +8,6 @@ gem 'puma'
 gem 'rails', '5.2.2'
 gem 'redis'
 
-gem 'wicked'
-
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'font-awesome-sass', '~> 5.5.0'
@@ -22,6 +20,7 @@ gem 'pundit'
 gem 'carrierwave', '~> 1.2'
 gem 'cloudinary', '~> 1.9.1'
 gem 'wicked'
+gem 'geocoder'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
