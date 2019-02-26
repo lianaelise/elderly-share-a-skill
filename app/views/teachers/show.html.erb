@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="flex-container">
+    <div class="profile-container">
       <div class="profile-contact">
       <div class="profile-img">
         <% if @teacher.picture.present? %>
@@ -41,9 +41,20 @@
   </div>
 </div>
 
-<!-- Reviews -->
-<div class="container">
+<div class="container text-right">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+      <p><%= link_to 'Make an Appointment!', new_teacher_appointment_path(@teacher), class: "btn btn-primary" %></p>
+    </li>
+    <li class="list-inline-item">
+      <p><%= link_to 'Chat', chats_path(sender_id: current_user.id, recipient_id: @teacher.id), method: :post, class: "btn btn-primary" %></p>
+    </li>
+  </ul>
+</div>
 
+<!-- Reviews -->
+
+<div class="container">
     <h2 class="header-comments text-center"> Comments </h2>
     <% @reviews = Review.where(reviewee_id: @teacher.id) %>
     <% if @reviews.count > 0 %>
@@ -51,10 +62,10 @@
         <% @reviews.each do |review| %>
         <div class="col-4">
           <div class="elder-card">
-            <h3 class="card-header my-card-header">
-            <%= review.reviewer.first_name %>
+            <p class="card-header my-card-header"> <strong>
+            <%= review.reviewer.first_name %> said... </strong>
             <i class="fas fa-comments"></i>
-            </h3>
+            </p>
             <p class="card-body">
               <div class="my-card-body">
                 <i class="fas fa-quote-left"></i> <%= review.body %> <i class="fas fa-quote-right"></i>
@@ -67,14 +78,13 @@
       <% else %>
         <p> Share the love and say something great about <%= @teacher.first_name.capitalize %>!</p>
       <% end %>
-      <p><%= link_to 'Write a Comment!', new_teacher_review_path(@teacher), class: "btn btn-primary" %></p>
+      <p><%= link_to 'Write a Comment!', new_teacher_review_path(@teacher), class: "btn btn-primary text-right" %></p>
     </div>
 </div>
 
 <!-- Navigation Buttons -->
 
 <div class="container">
-  <p><%= link_to 'Back', teachers_path, class: "btn btn-primary" %></p>
-  <p><%= link_to 'Make an Appointment!', new_teacher_appointment_path(@teacher), class: "btn btn-primary" %></p>
-  <p><%= link_to 'chat', chats_path(sender_id: current_user.id, recipient_id: @teacher.id), method: :post %></p>
+  <p><%= link_to 'Back', teachers_path, class: "btn btn-danger" %></p>
+
 </div>
