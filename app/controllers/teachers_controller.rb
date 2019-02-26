@@ -1,6 +1,9 @@
 class TeachersController < ApplicationController
   def index
+<<<<<<< HEAD
 
+=======
+>>>>>>> b5a48aa74d7990dba182c0a433e211d38beefd1f
     if params[:query].present?
       @teachers = Teacher.find_by_skill_or_subject(params[:query])
       @map_teachers = Teacher.where.not(latitude: nil, longitude: nil)
@@ -10,6 +13,10 @@ class TeachersController < ApplicationController
           lat: teacher.latitude,
           infoWindow: "#{teacher.first_name} #{teacher.first_name}"
         }
+<<<<<<< HEAD
+=======
+      end
+>>>>>>> b5a48aa74d7990dba182c0a433e211d38beefd1f
     else
       @teachers = Teacher.all
       end
@@ -24,16 +31,3 @@ class TeachersController < ApplicationController
     @teacher = Teacher.find(current_user.id)
   end
 end
-
-# def index
-#     if params[:query].present?
-#       sql_query = " \
-#         movies.title ILIKE :query \
-#         OR movies.syllabus ILIKE :query \
-#         OR directors.first_name ILIKE :query \
-#         OR directors.last_name ILIKE :query \
-#       "
-#       @movies = Movie.joins(:director).where(sql_query, query: "%#{params[:query]}%")
-#     else
-#       @movies = Movie.all
-#     end
