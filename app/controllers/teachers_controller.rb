@@ -4,10 +4,11 @@ class TeachersController < ApplicationController
 
     @teachers = Teacher.where.not(latitude: nil, longitude: nil)
 
-    @markers = @teachers.map do |flat|
+    @markers = @teachers.map do |teacher|
       {
-        lng: flat.longitude,
-        lat: flat.latitude,
+        lng: teacher.longitude,
+        lat: teacher.latitude,
+        infoWindow: "#{teacher.first_name} #{teacher.first_name}"
       }
     end
   end
