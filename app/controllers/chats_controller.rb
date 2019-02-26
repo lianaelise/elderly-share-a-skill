@@ -13,7 +13,7 @@ class ChatsController < ApplicationController
   end
 
   def create
-    @chat = Chat.between(params[:sender_id], params[:recipient_id].first_or_create!(chat_params))
+    @chat = Chat.between(params[:sender_id], params[:recipient_id]).first_or_create!(chat_params)
     redirect_to @chat
   end
 
