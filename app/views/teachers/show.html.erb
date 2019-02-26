@@ -43,16 +43,18 @@
           <h2> Comments </h2>
           <% @reviews = Review.where(reviewee_id: @teacher.id) %>
           <% if @reviews.count > 0 %>
-          <% @reviews.each do |review| %>
-          <p> <%= review.body %> </p>
-          <% end %>
+            <% @reviews.each do |review| %>
+              <p> <%= review.body %> </p>
+             <% end %>
           <% else %>
-          <p> Share the love and say something great about <%= @teacher.first_name.capitalize %>!</p>
+            <p> Share the love and say something great about <%= @teacher.first_name.capitalize %>!</p>
           <% end %>
+  
           <!-- Navigation Buttons -->
           <p><%= link_to 'Back', teachers_path, class: "btn btn-primary" %></p>
           <p>---</p>
           <p><%= link_to 'Write a review!', new_teacher_review_path(@teacher), class: "btn btn-primary" %></p>
-
+          <p><%= link_to 'Make an Appointment!', new_teacher_appointment_path(@teacher), class: "btn btn-primary" %></p>
+          <p><%= link_to 'chat', chats_path(sender_id: current_user.id, recipient_id: @teacher.id), method: :post %></p>
   </div>
 </div>

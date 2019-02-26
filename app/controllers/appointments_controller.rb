@@ -5,7 +5,7 @@ class AppointmentsController < ApplicationController
 
   def new
     @teacher = Teacher.find(params[:teacher_id])
-    @student = Student.find(params[:student_id])
+    @student = Student.find(current_user.id)
     @appointment = Appointment.new
   end
 
@@ -14,9 +14,10 @@ class AppointmentsController < ApplicationController
     @teacher = Teacher.find(params[:teacher_id])
     @appointment.teacher = @teacher
     @appointment.student_id = current_user.id
+    @appointment.status = "pending"
     if @appointment.valid?
       @appointment.save
-      redirect_to appointment_path(@appointment)
+      redirect_to my_appointments_appointments_path
     else
       render :new
     end
@@ -28,10 +29,19 @@ class AppointmentsController < ApplicationController
   end
 
   def update
-    @teacher = Teacher.find(params[:teacher_id])
     @appointment = Appointment.find(params[:id])
-    @appointment.update(appt_params)
-    redirect_to appointment_path(@appointment)
+    if params[:response].class == String
+      if params[:response] == "Accept"
+        @appointment.update_attribute(:status, "Accepted")
+      else
+        @appointment.update_attribute(:status, "Declined")
+      end
+      redirect_back fallback_location: "/appointments/my-appointments"
+    else
+      @teacher = Teacher.find(params[:teacher_id])
+      @appointment.update(appt_params)
+      redirect_to appointment_path(@appointment)
+    end
   end
 
   def destroy
@@ -41,7 +51,12 @@ class AppointmentsController < ApplicationController
   end
 
   def my_appointments
-    @appointments = Appointment.where(student_id: current_user.id)
+    @user = current_user
+    if @user.type == "Student"
+      @appointments = Appointment.where(student_id: current_user.id)
+    else
+      @appointments = Appointment.where(teacher_id: current_user.id)
+    end
   #   # (teacher_id: current_user.id).or
   end
 
