@@ -17,10 +17,11 @@ Rails.application.routes.draw do
     collection do
       get 'profile'
     end
+    resources :appointments, only: [:new, :create]
     resources :reviews, only: [:new, :create]
     resources :skills do
-    resources :subjects
-      end
+      resources :subjects
+    end
   end
 
   resources :students, only: [:show] do
