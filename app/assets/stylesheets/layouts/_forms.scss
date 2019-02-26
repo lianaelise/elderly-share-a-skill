@@ -1,15 +1,3 @@
-.btn-primary {
-  padding-right: 30px;
-  padding-left: 30px;
-  border-radius: 10px;
-}
-
-.btn-primary:hover {
-  color: $blue;
-  background-color: $light-gray;
-  border-color: $blue;
-}
-
 .form-heading {
   margin: 100px 0px 30px 0px;
 }
@@ -53,7 +41,40 @@ label {
   font-weight: lighter;
 }
 
+// #appointment_start_time, #appointment_end_time {
+  // -webkit-appearance: none;
+//   background-color: $light-gray;
+//   border-bottom-color: $blue;
+//   border-width: 0px 0px 2px 0px;
+//   border-radius: 0px;
+//   padding: 0px 40px;
+//   font-size: 30px;
+//   margin: 30px 0px;
+//   font-weight: lighter;
+// }
 
+// #appointment_start_time, #appointment_end_time {
+//   -webkit-box-shadow: inset 0 0 0px 9999px $light-gray;
+//   -webkit-text-fill-color: $blue;
+// }
 
+.placeholder {
+  font-size: 18px;
+}
 
+.form-control {
+  background-color: $light-gray;
+  border-bottom-color: $blue;
+  border-width: 0px 0px 2px 0px;
+  border-radius: 0px;
+  padding: 0px 40px;
+  font-size: 30px;
+  margin: 30px 0px;
+  font-weight: lighter;
+}
+
+.form-control {
+  -webkit-box-shadow: inset 0 0 0px 9999px $light-gray;
+  -webkit-text-fill-color: $blue;
+}
 
