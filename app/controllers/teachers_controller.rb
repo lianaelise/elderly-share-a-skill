@@ -1,18 +1,18 @@
 class TeachersController < ApplicationController
   def index
 
-    @map_teachers = Teacher.where.not(latitude: nil, longitude: nil)
-
-    @markers = @map_teachers.map do |teacher|
-      {
-        lng: teacher.longitude,
-        lat: teacher.latitude,
-        infoWindow: "#{teacher.first_name} #{teacher.first_name}"
-      }
     if params[:query].present?
       @teachers = Teacher.find_by_skill_or_subject(params[:query])
+      @map_teachers = Teacher.where.not(latitude: nil, longitude: nil)
+      @markers = @map_teachers.map do |teacher|
+        {
+          lng: teacher.longitude,
+          lat: teacher.latitude,
+          infoWindow: "#{teacher.first_name} #{teacher.first_name}"
+        }
     else
       @teachers = Teacher.all
+      end
     end
   end
 
