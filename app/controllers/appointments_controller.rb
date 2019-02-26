@@ -5,7 +5,7 @@ class AppointmentsController < ApplicationController
 
   def new
     @teacher = Teacher.find(params[:teacher_id])
-    @student = Student.find(params[:student_id])
+    @student = Student.find(current_user.id)
     @appointment = Appointment.new
   end
 
@@ -14,9 +14,10 @@ class AppointmentsController < ApplicationController
     @teacher = Teacher.find(params[:teacher_id])
     @appointment.teacher = @teacher
     @appointment.student_id = current_user.id
+    @appointment.status = "pending"
     if @appointment.valid?
       @appointment.save
-      redirect_to appointment_path(@appointment)
+      redirect_to my_appointments_appointments_path
     else
       render :new
     end
