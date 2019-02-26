@@ -1,9 +1,11 @@
-<h1>Write a review!</h1>
+<div class="container">
+  <h1>Give <%= @user.first_name %> some love!</h1>
 
-<%= simple_form_for [@user, @review] do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <%= simple_form_for [@user, @review] do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <%= f.input :body %>
-  <%= f.submit "Add Review", class: "btn btn-primary" %>
-<% end %>
+    <%= f.input :body, label: 'Write a Comment Below' %>
+    <%= f.submit "Add Review", class: "btn btn-primary" %>
+  <% end %>
+</div>
