@@ -15,7 +15,11 @@ class ReviewsController < ApplicationController
     @review.reviewee = @user
     if @review.valid?
       @review.save
-      redirect_to teacher_path(@user.id)
+      if @user.type == "Student"
+        redirect_to student_path(@user.id)
+      else
+        redirect_to teacher_path(@user.id)
+      end
     else
       render :new
     end
@@ -24,7 +28,11 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to teacher_path(@user.id)
+    if @user.type == "Student"
+      redirect_to student_path(@user.id)
+    else
+      redirect_to teacher_path(@user.id)
+    end
   end
 
   private

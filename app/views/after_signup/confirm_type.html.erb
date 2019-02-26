@@ -1,5 +1,16 @@
-<%= form_for @user, url: wizard_path, method: :put do |f| %>
-  <%= f.select :type, ["Student", "Teacher"] %>
-  <%= f.submit "Submit" %>
-<% end %>
-
+<div class="container text-center">
+  <!-- <div class="flex-container"> -->
+  <h1 class="form-heading">Signing up as a teacher or student?</h1>
+    <%= form_for @user, url: wizard_path, method: :put do |f| %>
+    <div class="row align-items-center">
+      <div class="col-xl-6 offset-xl-3">
+        <%= f.select :type, ["Student", "Teacher"], class: "text-center" %>
+      </div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-xl-6 offset-xl-3">
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      </div>
+    </div>
+    <% end %>
+</div>

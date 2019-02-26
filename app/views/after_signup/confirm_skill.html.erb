@@ -1,1 +1,16 @@
-confirm_skill.html.erb
+<div class="container text-center">
+  <h1 class="form-heading">Tell us more...</h1>
+  <ul>
+  <%= form_for @user, url: wizard_path, method: :put do |f| %>
+    <%= f.fields_for :skills, @skills do |s| %>
+      <div>
+        <%= label :name, s.object.subject.name  %>
+        <%= s.text_field  :name %>
+        <%= s.hidden_field :subject_id %>
+      </div>
+    <% end %>
+
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+  </ul>
+</div>

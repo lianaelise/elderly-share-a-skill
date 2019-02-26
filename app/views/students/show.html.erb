@@ -2,34 +2,30 @@
 
 <!-- Display Profile Information -->
 
-  <!--   % if @student.picture.present? %>
-    %=  cl_image_tag @student.picture, width:400, height: 400, :crop=>"fill" %>
-    % end %> -->
+  <% if @student.picture.present? %>
+  <%=  cl_image_tag @student.picture, width:400, height: 400, :crop=>"fill" %>
+  <% end %>
 
-    <h1><%= @student.first_name %> <%= @student.last_name %></h1>
-    <p>Bio: <%= @student.bio %></p>
-
-
-<!-- Button Section -->
-    <ul class="list-inline">
-      <li class="list-inline-item">
-        <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary" %>
-      </li>
-    </ul>
+  <h1><%= @student.first_name %> <%= @student.last_name %></h1>
+  <p>Bio: <%= @student.bio %></p>
 
 
 <!-- Reviews Section -->
 
-<!--     <h2> Reviews </h2>
-    % if @reviews.count > 0 %>
-          <p> Average Rating </p>
-            % @all_ratings = [] %>
-            % @reviews.each do |review| %>
-            % @all_ratings << review.rating %>
-            % end %>
-            %= @all_ratings.sum/@all_ratings.length.round(2) %> </td>
-      % else %>
-      <p> %= @student.first_name.capitalize %> has no reviews </p>
-      % end %> -->
+  <h2> Comments </h2>
+    <% @reviews = Review.where(reviewee_id: @student.id) %>
+    <% if @reviews.count > 0 %>
+      <% @reviews.each do |review| %>
+        <p> <%= review.body %> </p>
+      <% end %>
+    <% else %>
+      <p> Share the love and say something great about <%= @student.first_name.capitalize %>! </p>
+    <% end %>
+
+<!-- Navigation Buttons -->
+
+  <p><%= link_to 'View Teachers', teachers_path, class: "btn btn-primary" %></p>
+  <p>---</p>
+  <p><%= link_to 'Write a Review!', new_student_review_path(@student), class: "btn btn-primary" %></p>
 
 </div>

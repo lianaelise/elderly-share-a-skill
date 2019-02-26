@@ -1,4 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container text-center">
+  <h1>Elder Share-a-Skill</h1>
+  <p>Some Clever Slogan Here</p>
 
-<%= link_to 'Sign out', destroy_user_session_path(@user), method: :delete %>
+  <%= link_to 'Sign out', destroy_user_session_path(@user), method: :delete %>
+</div>
+
+<%= form_tag teachers_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Search for a skill"
+  %>
+<% end %>
+
