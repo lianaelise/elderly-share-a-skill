@@ -1,6 +1,10 @@
 <div class="container">
   <h1>Teacher: <%= @teacher.first_name %> <%= @teacher.last_name %> </h1>
 
+  <% if @teacher.picture.present? %>
+    <%=  cl_image_tag @teacher.picture, width:200, height: 200, :crop=>"fill" %>
+  <% end %>
+
   <p>Address: <%= @teacher.address %></p>
   <p>Bio: <%= @teacher.bio %></p>
   <p>Email: <%= @teacher.email %></p>

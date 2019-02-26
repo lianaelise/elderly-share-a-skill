@@ -8,11 +8,11 @@
 
 puts 'Destroying'
 
+Review.destroy_all
+Skill.destroy_all
+Subject.destroy_all
 Teacher.destroy_all
 Student.destroy_all
-Subject.destroy_all
-Skill.destroy_all
-Review.destroy_all
 
 puts 'completed'
 
