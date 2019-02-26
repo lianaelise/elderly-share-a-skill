@@ -6,13 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# puts 'Destroying'
+puts 'Destroying'
 
-# Teacher.destroy_all
-# Student.destroy_all
-# Subject.destroy_all
-# Skill.destroy_all
-# Review.destroy_all
+Review.destroy_all
+Skill.destroy_all
+Subject.destroy_all
+Teacher.destroy_all
+Student.destroy_all
 
 puts 'completed'
 
