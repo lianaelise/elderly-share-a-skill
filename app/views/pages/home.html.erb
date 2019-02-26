@@ -4,3 +4,12 @@
 
   <%= link_to 'Sign out', destroy_user_session_path(@user), method: :delete %>
 </div>
+
+<%= form_tag teachers_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Search for a skill"
+  %>
+<% end %>
+
