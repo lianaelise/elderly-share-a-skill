@@ -7,7 +7,7 @@ class TeachersController < ApplicationController
     @markers = @teachers.map do |flat|
       {
         lng: flat.longitude,
-        lat: flat.latitude
+        lat: flat.latitude,
       }
     end
   end
