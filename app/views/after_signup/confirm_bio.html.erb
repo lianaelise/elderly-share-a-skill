@@ -1,7 +1,15 @@
 <div class="container text-center">
   <h1 class="form-heading">Tell us a little about you!</h1>
   <%= form_for @user, url: wizard_path, method: :put do |f| %>
-    <%= f.text_field :bio %>
-    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <div class="row align-items-center">
+    <div class="col-xl-6 offset-xl-3">
+      <%= f.text_field :bio %>
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col-xl-6 offset-xl-3">
+     <%= f.submit "Submit", class: "btn btn-primary" %>
+    </div>
+  </div>
   <% end %>
 </div>

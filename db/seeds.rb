@@ -6,20 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts 'Destroying'
+# puts 'Destroying'
 
-Teacher.destroy_all
-Student.destroy_all
-Subject.destroy_all
-Skill.destroy_all
+# Teacher.destroy_all
+# Student.destroy_all
+# Subject.destroy_all
+# Skill.destroy_all
+# Review.destroy_all
 
 puts 'completed'
 
 
 puts 'Creating teachers'
-user1 = Teacher.create(first_name:'Carlos', last_name:'Perez', email: 'carlos@gmail.com', password:'123456', address:'Calle Maestro Victoria, 2, 28013 Madrid, Spain
-
-', phone_number:'048928583')
+user1 = Teacher.create(first_name:'Carlos', last_name:'Perez', email: 'carlos@gmail.com', password:'123456', address:'Calle Maestro Victoria, 2, 28013 Madrid, Spain', phone_number:'048928583')
 user2 = Teacher.create(first_name:'Paul', last_name:'Smith', email: 'paul@gmail.com', password:'123456', address:'75008 Paris, France', phone_number:'94852985')
 user3 = Teacher.create(first_name:'John', last_name:'Davis', email: 'john@gmail.com', password:'123456', address:'24 Inverness St, Camden Town, London NW1 7HJ, UK', phone_number:'4536357')
 user4 = Teacher.create(first_name:'Jennifer', last_name:'Wilson', email: 'Jennifer@gmail.com', password:'123456', address:'769A Washington Ave, Brooklyn, NY 11238, USA', phone_number:'9856735')
