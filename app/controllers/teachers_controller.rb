@@ -1,10 +1,10 @@
 class TeachersController < ApplicationController
   def index
-    # @teachers = Teacher.all
+    @teachers = Teacher.all
 
-    @teachers = Teacher.where.not(latitude: nil, longitude: nil)
+    @map_teachers = Teacher.where.not(latitude: nil, longitude: nil)
 
-    @markers = @teachers.map do |teacher|
+    @markers = @map_teachers.map do |teacher|
       {
         lng: teacher.longitude,
         lat: teacher.latitude,
