@@ -1,6 +1,8 @@
 <div class="container">
-  <% @appointments.each do |appt| %>
-     <%= appt.start_time.to_formatted_s(:short)  %>
-     <%= appt.end_time.to_formatted_s(:short) %>
-  <% end %>
+  <h1>My Appointments
+    <% @appointments.each do |appt| %>
+       <%= appt.start_time.to_formatted_s(:short)  %>
+       <%= appt.end_time.to_formatted_s(:short) %>
+    <% end %>
+  </h1>
 </div>

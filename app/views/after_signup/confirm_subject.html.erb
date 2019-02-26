@@ -1,8 +1,11 @@
-<%= form_for @user, url: wizard_path, method: :put do |f| %>
-  <% Subject.all.each do |subject| %>
+<div class="container text-center">
+  <h1 class="form-heading">What would you like to teach?</h1>
+  <%= form_for @user, url: wizard_path, method: :put do |f| %>
+    <% Subject.all.each do |subject| %>
 
-  <%= subject.name %>
-    <%= check_box_tag "subjects[]", subject.id %>
+    <%= subject.name %>
+      <%= check_box_tag "subjects[]", subject.id %>
+    <% end %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
   <% end %>
-  <%= f.submit "Submit" %>
-<% end %>
+<div>

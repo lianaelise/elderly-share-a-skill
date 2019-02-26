@@ -1,5 +1,8 @@
-<%= simple_form_for @user, url: wizard_path, method: :put do |f| %>
-  <%= f.input :picture %>
-  <%= f.input :picture_cache, as: :hidden %>
-  <%= f.submit "Submit" %>
-<% end %>
+<div class="container text-center">
+  <h1 class="form-heading">Upload a profile image</h1>
+  <%= simple_form_for @user, url: wizard_path, method: :put do |f| %>
+    <%= f.input :picture %>
+    <%= f.input :picture_cache, as: :hidden %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+</div>
