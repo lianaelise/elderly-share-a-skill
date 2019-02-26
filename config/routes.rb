@@ -2,10 +2,17 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
+  devise_for :users, controllers: { registrations: 'registrations' }
+
+  mount ActionCable.server => '/cable'
+
+  resources :chats, only: [:index, :create, :show] do
+   resources :messages, only: [:index, :create] do
+
+    end
+  end
 
   resources :after_signup
-
-  devise_for :users, controllers: { registrations: 'registrations' }
 
   resources :teachers, only: [:index, :show] do
     collection do
