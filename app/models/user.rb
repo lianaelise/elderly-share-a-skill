@@ -5,6 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :reviews
 
+  def sender?(conversation)
+    self == conversation.sender
+  end
+
+  def recipient?(conversation)
+    self == conversation.recipient
+  end
+
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
 end
