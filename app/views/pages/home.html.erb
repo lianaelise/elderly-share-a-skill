@@ -1,15 +1,18 @@
-<div class="container text-center">
+<div class="banner">
+<div class="titles">
   <h1>Elder Share-a-Skill</h1>
-  <p>Some Clever Slogan Here</p>
-
-  <%= link_to 'Sign out', destroy_user_session_path(@user), method: :delete %>
+  <h2>Some Clever Slogan Here</h2>
 </div>
-
-<%= form_tag teachers_path, method: :get do %>
+<div class="search-form">
+  <%= form_tag teachers_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
-    class: "form-control",
+    class: "form-control text-center",
     placeholder: "Search for a skill"
   %>
 <% end %>
+</div>
+</div>
+
+
 
