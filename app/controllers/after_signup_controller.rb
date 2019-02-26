@@ -6,7 +6,12 @@ class AfterSignupController < ApplicationController
   def show
     @user = current_user
     case step
-    when :confirm_skill
+      when :confirm_subject
+        skip_step if @user.type == 'Student'
+
+      when :confirm_skill
+        skip_step if @user.type == 'Student'
+
       @subjects = Subject.where(id: params[:subjects])
       @skills = @subjects.map { |subject| @user.skills.new(subject: subject) }
     end
