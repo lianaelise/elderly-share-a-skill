@@ -2,7 +2,7 @@
 
    <% if @teacher.picture.present? %>
     <%=  cl_image_tag @teacher.picture, width:200, height: 200, :crop=>"fill" %>
- <% end %>
+   <% end %>
 
   <p>Address: <%= @teacher.address %></p>
   <p>Bio: <%= @teacher.bio %></p>

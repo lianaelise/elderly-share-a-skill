@@ -1,20 +1,28 @@
-<h1>All Teachers</h1>
-<div class="teachers">
-  <% @teachers.each do |teacher| %>
-    <li>
-      <strong><%= link_to "#{teacher.first_name} #{teacher.last_name}", teacher_path(teacher.id)%></strong>
-      <% teacher.skills.each do |skill| %>
-        <p>Skills: <%= skill.subject.name %> - <%= skill.name %></p>
-      <% end %>
-    </li>
-  <% end %>
+<div>
+  <h1>All Teachers</h1>
 </div>
-<div class="mapbox">
-  <h1>MAP</h1>
+<div class="map-wrapper">
+  <div class="map-cards">
+    <div class="row card-group">
+      <% @teachers.each do |teacher| %>
+        <div class="col-4">
+            <div class="my-card">
+              <div class="card-img">
+                <% if teacher.picture.present? %>
+                  <%=  cl_image_tag teacher.picture, width:200, height: 200, :crop=>"fill" %>
+                <% end %>
+              </div>
+              <strong><%= link_to "#{teacher.first_name} #{teacher.last_name}", teacher_path(teacher.id)%></strong>
+              <!--   <%# teacher.skills.each do |skill| %>
+              <p><%#= skill.name %></p>
+              <%# end %> -->
+            </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
   <div
     id="map"
-    style="width: 100%;
-    height: 600px;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div>

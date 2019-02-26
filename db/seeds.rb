@@ -21,9 +21,9 @@ puts 'Creating teachers'
 user1 = Teacher.create(first_name:'Carlos', last_name:'Perez', email: 'carlos@gmail.com', password:'123456', address:'Calle Maestro Victoria, 2, 28013 Madrid, Spain', phone_number:'048928583', remote_picture_url: "https://images.pexels.com/photos/25758/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
 bio:"Still at school Watershed. In 1987 he joined Signal Radio in Stoke-on-Trent, where he presented the Drivetime show, still under his real name, where his vocal style was compared by many to.
 He went on to appear on Cardiff's Red Dragon FM, followed by a presented the late night 10pm – 2am show. ")
-user2 = Teacher.create(first_name:'Paul', last_name:'Smith', email: 'paul@gmail.com', password:'123456', address:'75008 Paris, France', phone_number:'94852985')
-user3 = Teacher.create(first_name:'John', last_name:'Davis', email: 'john@gmail.com', password:'123456', address:'24 Inverness St, Camden Town, London NW1 7HJ, UK', phone_number:'4536357')
-user4 = Teacher.create(first_name:'Jennifer', last_name:'Wilson', email: 'Jennifer@gmail.com', password:'123456', address:'769A Washington Ave, Brooklyn, NY 11238, USA', phone_number:'9856735')
+user2 = Teacher.create(first_name:'Paul', last_name:'Smith', email: 'paul@gmail.com', password:'123456', address:'75008 Paris, France', phone_number:'94852985', remote_picture_url:'https://images.pexels.com/photos/334029/pexels-photo-334029.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')
+user3 = Teacher.create(first_name:'John', last_name:'Davis', email: 'john@gmail.com', password:'123456', address:'24 Inverness St, Camden Town, London NW1 7HJ, UK', phone_number:'4536357', remote_picture_url:'https://images.pexels.com/photos/160422/man-hat-portrait-old-man-160422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')
+user4 = Teacher.create(first_name:'Jennifer', last_name:'Wilson', email: 'Jennifer@gmail.com', password:'123456', address:'769A Washington Ave, Brooklyn, NY 11238, USA', phone_number:'9856735', remote_picture_url:'https://images.pexels.com/photos/70578/dependent-dementia-woman-old-70578.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')
 
 puts 'Creating students'
 Student.create(first_name:'Linda', last_name:'Hill', email:'linda@gmail.com', password:'123456', address:'Kurfürstenstraße 76, 10787 Berlin, Germany', phone_number:'45809852')
