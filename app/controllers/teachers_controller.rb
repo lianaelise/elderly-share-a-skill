@@ -1,4 +1,6 @@
 class TeachersController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
+
   def index
     if params[:query].present?
       @teachers = Teacher.find_by_skill_or_subject(params[:query])
