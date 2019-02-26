@@ -12,20 +12,35 @@
 
 <!-- Reviews Section -->
 
-  <h2> Comments </h2>
+  <h2 class="header-comments text-center"> Comments </h2>
     <% @reviews = Review.where(reviewee_id: @student.id) %>
     <% if @reviews.count > 0 %>
+    <div class="row card-group">
       <% @reviews.each do |review| %>
-        <p> <%= review.body %> </p>
+        <div class="col-4">
+          <div class="elder-card">
+            <h3 class="card-header my-card-header">
+              <%= review.reviewer.first_name %>
+              <i class="fas fa-comments"></i>
+            </h3>
+            <p class="card-body">
+              <div class="my-card-body">
+              <i class="fas fa-quote-left"></i> <%= review.body %> <i class="fas fa-quote-right"></i>
+              </div>
+            </p>
+          </div>
+        </div>
       <% end %>
+    </div>
     <% else %>
       <p> Share the love and say something great about <%= @student.first_name.capitalize %>! </p>
     <% end %>
 
 <!-- Navigation Buttons -->
 
-  <p><%= link_to 'View Teachers', teachers_path, class: "btn btn-primary" %></p>
-  <p>---</p>
   <p><%= link_to 'Write a Review!', new_student_review_path(@student), class: "btn btn-primary" %></p>
+
+  <p><%= link_to 'View Teachers', teachers_path, class: "btn btn-primary" %></p>
+
   <p><%= link_to 'chat', chats_path(sender_id: current_user.id, recipient_id: @student.id), method: :post %></p>
 </div>

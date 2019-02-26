@@ -1,6 +1,13 @@
 .btn-primary {
   padding-right: 30px;
   padding-left: 30px;
+  border-radius: 10px;
+}
+
+.btn-primary:hover {
+  color: $blue;
+  background-color: $light-gray;
+  border-color: $blue;
 }
 
 .form-heading {
