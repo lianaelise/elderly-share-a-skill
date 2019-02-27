@@ -1,29 +1,26 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-6 chats-container">
-      <div class="chats">
+  <div class="content">
+    <div class="row">
+      <div class="col-xl-6 order-1">
         <%= render @chats %>
       </div>
-    </div>
-    <div class="col-xs-12 col-md-6 chat-container">
-      <div class="active-chat">
-        <div class="messages">
-          <div class="messages--content">
-            <%= render @messages %>
-          </div>
-        </div>
-        <div class="chat--form">
-          <%= form_for [@chat, @message] do |f| %>
-          <div class="message-form">
-            <%= f.text_field :body, placeholder: "Type message", autofocus: true, class: "message-form--input" %>
-            <%= f.hidden_field :chat_id, value: @chat.id %>
-            <%= f.submit "Send", class: "message-form--submit" %>
-          </div>
-          <% end %>
-        </div>
+      <div class="col-xl-6 offset-6">
+          <%= render @messages %>
       </div>
     </div>
   </div>
+</div>
+
+<div class="container">
+  <!-- <div class="push"> -->
+    <div class="message-form">
+    <%= form_for [@chat, @message] do |f| %>
+      <%= f.text_field :body, placeholder: "Type message", autofocus: true, class: "message-form-input" %>
+      <%= f.hidden_field :chat_id, value: @chat.id %>
+      <%= f.submit "Send", class: "message-form-submit" %>
+    <% end %>
+    </div>
+  <!-- </div> -->
 </div>
 
 

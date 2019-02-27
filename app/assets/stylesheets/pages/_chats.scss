@@ -1,60 +1,102 @@
-/////////left////////////////////
+// ------ Chat Show ------ //
 
-.chats-container{
-  background-color:$light-gray;
-  padding:10px;
-}
-
-.chat{
-  border-bottom: 0.5px solid #7E7D7D;
-  min-height: 10vh;
-  overflow: scroll;
-  padding: 10px;
-  &:hover{
-    background-color: $pink;
-  }
-}
-
-.message-body{
-  overflow:scroll;
-}
-
-.chats > a {
-  text-decoration: none !important;
-}
-///////////right/////////////////////
-
-.active-chat{
-}
-
-.chat-container{
-
-
-}
-
-.chat-container{
-
-}
-
-.messages--content{
-  height:80vh;
-  display:flex;
-  flex-direction: column;
-  overflow-y:scroll;
-}
-
-.message{
-  background-color: $red;
-  padding: 5px;
-  margin: 5px;
-  color: white;
-  border-radius: 10px;
-}
-.message.other{
-  background-color: $blue;
-
-}
-
-.message-form{
+.show-all {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+// .content {
+//   min-height: calc(100vh-70px);
+// }
+
+// /////////left////////////////////
+
+
+// .chat {
+//   border-bottom: 0.5px solid $blue;
+//   min-height: 10vh;
+//   overflow: scroll;
+//   padding: 10px;
+//   &:hover {
+//     background-color: $red;
+//   }
+// }
+
+// .message-body {
+//   overflow:scroll;
+// }
+
+// .chats > a {
+//   text-decoration: none !important;
+// }
+// ///////////right/////////////////////
+
+// .messages-content {
+//   height:80vh;
+//   display:flex;
+//   flex-direction: column;
+//   overflow-y:scroll;
+// }
+
+// .message {
+//   background-color: $red;
+//   padding: 5px;
+//   margin: 5px;
+//   color: white;
+//   border-radius: 10px;
+// }
+// .message.other {
+//   background-color: $blue;
+
+// }
+
+// ---//--- bottom ---//--- //
+
+
+// ------ Message Menu ------ //
+
+.message-menu-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 5px;
+  background: $mint;
+  opacity: .9;
+}
+
+.message-menu-pic {
+  border: 2px solid $light-gray;
+  border-radius: 2px;
+  margin: 10px;
+}
+
+.message-menu {
+  line-height: 50%;
+  color: $light-gray;
+  font-size: 14px;
+}
+
+
+// ------ Message Box ------ //
+
+.message-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 5px;
+  background: $blue;
+  opacity: .9;
+}
+
+.message-pic {
+  border: 2px solid $light-gray;
+  border-radius: 2px;
+  margin: 10px;
+}
+
+.message {
+  line-height: 50%;
+  color: $light-gray;
+  font-size: 14px;
 }
