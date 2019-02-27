@@ -10,12 +10,19 @@
   border-radius: 10px;
 }
 
-.elder-button {
+.elder-button-blue {
   border-radius: 10px;
-  padding: 6px 30px;
+  padding: 8px 30px;
   border-radius: 10px;
   color: white;
   background-color: $blue;
+  transition: background 0.3s ease;
+  text-decoration: none;
 }
 
-
+.elder-button-blue:hover {
+  background: $light-gray;
+  color: $blue;
+  border: 1px solid $blue;
+  text-decoration: none;
+}

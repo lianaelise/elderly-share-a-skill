@@ -1,20 +1,45 @@
-<h1><%= @student.first_name %> <%= @student.last_name %> profile</h1>
+<div class="container">
+  <div class="row">
+    <div class="profile-container">
+      <div class="profile-img">
+        <% if @student.picture.present? %>
+        <%=  cl_image_tag @student.picture, width:280, height: 280, :crop=>"fill" %>
+        <% end %>
+        <div class="contact-details">
+          <p>Email: <%= @student.email %></p>
+          <p>Phone: <%= @student.phone_number %></p>
+        </div>
+      </div>
+      <div class="profile-contact">
+      </div>
+      <div class="details">
+        <h3><%= @student.first_name %> <%= @student.last_name %> </h3>
+        <p>Address: <%= @student.address %></p>
+        <div class="icons">
+          <ul class = "list-inline">
+            <li>
+              <i class="far fa-heart"></i>
+            </li>
+            <li>
+              <i class="far fa-smile"></i>
+            </li>
+            <li>
+              <i class="far fa-comment"></i>
+            </li>
+          </ul>
+          <p>Bio: <%= @student.bio %></p>
+        </div>
+      </div>
+    </div>
+    <!-- edit button-->
+    <ul class="list-inline">
+      <li class="list-inline-item">
+        <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary" %>
+      </li>
+    </ul>
+  </div>
+</div>
 
- <% if @student.picture.present? %>
-    <%=  cl_image_tag @student.picture, width:200, height: 200, :crop=>"fill" %>
- <% end %>
-
- <p><%= @student.bio %></p>
- <p><%= @student.address %></p>
- <p> <%= @student.phone_number %> </p>
- <p> <%= @student.email %> </p>
-
-<!-- edit button-->
-<ul class="list-inline">
-  <li class="list-inline-item">
-    <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary" %>
-  </li>
-</ul>
 
 
 

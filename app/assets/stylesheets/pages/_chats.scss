@@ -1,4 +1,5 @@
-// ///////left////////////////////
+
+/////////left////////////////////
 .chats-container{
   background-color:$light-gray;
   padding:10px;
@@ -24,6 +25,9 @@
 ///////////right/////////////////////
 
 .active-chat{
+}
+
+.chat-container{
 
 }
 
@@ -34,6 +38,7 @@
   flex-direction: column;
   overflow-y:scroll;
 }
+
 
 .message{
   background-color: $red;
@@ -51,6 +56,3 @@
   display: flex;
 
 }
-
-
-
