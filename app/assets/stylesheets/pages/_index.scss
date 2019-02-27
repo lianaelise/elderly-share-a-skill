@@ -14,8 +14,9 @@
   text-align: center;
   padding-top: 15px;
   padding-bottom: 20px;
-  margin: 0 auto;
+  margin: 0;
   margin-bottom: 30px;
+  margin-right: 20px;
 }
 
 .card-img {
@@ -31,9 +32,15 @@
 
 .map-wrapper {
   display: flex;
+  justify-content: space-around;
+  margin: auto 60px;
 }
 
 .map-cards {
   padding: 0 15px;
   flex-grow: 1;
+}
+
+.search-bar{
+  margin: auto 60px;
 }
