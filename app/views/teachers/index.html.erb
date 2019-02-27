@@ -1,6 +1,22 @@
 <div>
   <h1>All Teachers</h1>
 </div>
+<div class="categories">
+  <%= form_tag teachers_path, method: :get do %>
+  <%= text_field_tag :query,
+      params[:query]
+    %>
+  <% end %>
+<!--   <%#= simple_form_for @teachers, url: teachers_path do |f| %>
+    <div class="form-inputs">
+      <%#= f.collection_select(@subjects, Subject.all, :id, :name) %>
+    </div>
+    <div class="form-actions">
+      <%#= f.submit %>
+    </div>
+  <%# end %> -->
+</div>
+<p><%= link_to 'See all Teachers', teachers_path, class: "btn btn-primary" %></p>
 <div class="map-wrapper">
   <div class="map-cards">
     <div class="row card-group">
@@ -9,7 +25,7 @@
             <div class="my-card">
               <div class="card-img">
                 <% if teacher.picture.present? %>
-                  <%=  cl_image_tag teacher.picture, width:200, height: 200, :crop=>"fill" %>
+                  <%=  cl_image_tag teacher.picture, width: 100, :crop=>"fill" %>
                 <% end %>
               </div>
               <strong><%= link_to "#{teacher.first_name} #{teacher.last_name}", teacher_path(teacher.id)%></strong>
@@ -26,4 +42,20 @@
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div>
+<!--   <script>
+    var x = document.getElementById("demo");
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(showPosition);
+      } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+
+    function showPosition(position) {
+        x.innerHTML="Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude;
+    }
+  </script> -->
 </div>
