@@ -6,11 +6,11 @@
         <% if @teacher.picture.present? %>
         <%=  cl_image_tag @teacher.picture, width:280, height: 280, :crop=>"fill" %>
         <% end %>
+      </div>
         <div class="contact-details">
           <p>Email: <%= @teacher.email %></p>
           <p>Phone: <%= @teacher.phone_number %></p>
         </div>
-      </div>
       </div>
       <div class="details">
         <h3><%= @teacher.first_name %> <%= @teacher.last_name %> </h3>

@@ -1,17 +1,42 @@
 <div class="container">
-
-<!-- Display Profile Information -->
-
-  <% if @student.picture.present? %>
-  <%=  cl_image_tag @student.picture, width:400, height: 400, :crop=>"fill" %>
-  <% end %>
-
-  <h1><%= @student.first_name %> <%= @student.last_name %></h1>
-  <p>Bio: <%= @student.bio %></p>
-
+  <div class="row">
+    <div class="profile-container">
+      <div class="profile-img">
+        <% if @student.picture.present? %>
+        <%=  cl_image_tag @student.picture, width:280, height: 280, :crop=>"fill" %>
+        <% end %>
+        <div class="contact-details">
+          <p>Email: <%= @student.email %></p>
+          <p>Phone: <%= @student.phone_number %></p>
+        </div>
+      </div>
+      <div class="profile-contact">
+      </div>
+      <div class="details">
+        <h3><%= @student.first_name %> <%= @student.last_name %> </h3>
+        <p>Address: <%= @student.address %></p>
+        <div class="icons">
+          <ul class = "list-inline">
+            <li>
+              <i class="far fa-heart"></i>
+            </li>
+            <li>
+              <i class="far fa-smile"></i>
+            </li>
+            <li>
+              <i class="far fa-comment"></i>
+            </li>
+          </ul>
+          <p>Bio: <%= @student.bio %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Reviews Section -->
 
+<div class="container">
   <h2 class="header-comments text-center"> Comments </h2>
     <% @reviews = Review.where(reviewee_id: @student.id) %>
     <% if @reviews.count > 0 %>

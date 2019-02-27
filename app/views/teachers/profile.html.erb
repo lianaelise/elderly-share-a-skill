@@ -1,20 +1,47 @@
-  <h1>Teacher: <%= @teacher.first_name %> <%= @teacher.last_name %> </h1>
-
-   <% if @teacher.picture.present? %>
-    <%=  cl_image_tag @teacher.picture, width:200, height: 200, :crop=>"fill" %>
-   <% end %>
-
-  <p>Address: <%= @teacher.address %></p>
-  <p>Bio: <%= @teacher.bio %></p>
-  <p>Email: <%= @teacher.email %></p>
-  <p>Phone: <%= @teacher.phone_number %></p>
-
-  <h3>Skills:</h3>
-  <% @teacher.skills.each do |skill| %>
-    <li><%= skill.subject.name %> - <%= skill.name %></li>
-  <% end %>
-<ul class="list-inline">
-  <li class="list-inline-item">
-    <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary" %>
-  </li>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="profile-container">
+      <div class="profile-contact">
+        <div class="profile-img">
+          <% if @teacher.picture.present? %>
+          <%=  cl_image_tag @teacher.picture, width:280, height: 280, :crop=>"fill" %>
+          <% end %>
+          <div class="contact-details">
+            <p>Email: <%= @teacher.email %></p>
+            <p>Phone: <%= @teacher.phone_number %></p>
+          </div>
+        </div>
+      </div>
+      <div class="details">
+        <h3><%= @teacher.first_name %> <%= @teacher.last_name %> </h3>
+        <p>Address: <%= @teacher.address %></p>
+        <div class="icons">
+          <ul class = "list-inline">
+            <li>
+              <i class="far fa-heart"></i>
+            </li>
+            <li>
+              <i class="far fa-smile"></i>
+            </li>
+            <li>
+              <i class="far fa-comment"></i>
+            </li>
+          </ul>
+          <div class="skills">
+            <ul class = "list-inline">
+              <% @teacher.skills.each do |skill| %>
+              <li><%= skill.name %></li>
+              <% end %>
+            </ul>
+          </div>
+          <p>Bio: <%= @teacher.bio %></p>
+        </div>
+      </div>
+    </div>
+    <ul class="list-inline">
+      <li class="list-inline-item">
+        <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary" %>
+      </li>
+    </ul>
+  </div>
+</div>
