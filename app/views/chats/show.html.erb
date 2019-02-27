@@ -1,21 +1,29 @@
-<div style="margin-top: 30px; height: calc(100vh - 130px);">
-  <div class="chats">
-    <%= render @chats %>
-  </div>
-  <div class="chat">
-    <div class="messages">
-      <div class="messages--content">
-        <%= render @messages %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 chats-container">
+      <div class="chats">
+        <%= render @chats %>
       </div>
     </div>
-    <div class="chat--form">
-      <%= form_for [@chat, @message] do |f| %>
-        <div class="message-form">
-          <%= f.text_field :body, placeholder: "Type message", autofocus: true, class: "message-form--input" %>
-          <%= f.hidden_field :chat_id, value: @chat.id %>
-          <%= f.submit "Send", class: "message-form--submit" %>
+    <div class="col-xs-12 col-md-6 chat-container">
+      <div class="active-chat">
+        <div class="messages">
+          <div class="messages--content">
+            <%= render @messages %>
+          </div>
         </div>
-      <% end %>
+        <div class="chat--form">
+          <%= form_for [@chat, @message] do |f| %>
+          <div class="message-form">
+            <%= f.text_field :body, placeholder: "Type message", autofocus: true, class: "message-form--input" %>
+            <%= f.hidden_field :chat_id, value: @chat.id %>
+            <%= f.submit "Send", class: "message-form--submit" %>
+          </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+

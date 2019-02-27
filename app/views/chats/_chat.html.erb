@@ -2,11 +2,12 @@
 <%= link_to chat do %>
   <div class="row chat">
     <% if chat.messages.any? %>
-      <div class="col-md-4">
+      <div class="col-md-6">
+        <%= cl_image_tag other_user.picture, width:50, height: 50, :crop=>"fill" %>
         <%= other_user.first_name %>
         <%= chat.messages.last.message_time %>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-6 message-body">
         <%= chat.messages.last.body %>
       </div>
     <% end %>

@@ -6,11 +6,11 @@
         <% if @teacher.picture.present? %>
         <%=  cl_image_tag @teacher.picture, width:280, height: 280, :crop=>"fill" %>
         <% end %>
+      </div>
         <div class="contact-details">
           <p>Email: <%= @teacher.email %></p>
           <p>Phone: <%= @teacher.phone_number %></p>
         </div>
-      </div>
       </div>
       <div class="details">
         <h3><%= @teacher.first_name %> <%= @teacher.last_name %> </h3>
@@ -44,10 +44,10 @@
 <div class="container text-right">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <p><%= link_to 'Make an Appointment!', new_teacher_appointment_path(@teacher), class: "btn btn-primary" %></p>
+      <p><%= link_to 'Make an Appointment!', new_teacher_appointment_path(@teacher), class: "elder-button-blue" %></p>
     </li>
     <li class="list-inline-item">
-      <p><%= link_to 'Chat', chats_path(sender_id: current_user.id, recipient_id: @teacher.id), method: :post, class: "btn btn-primary" %></p>
+      <p><%= link_to 'Chat', chats_path(sender_id: current_user.id, recipient_id: @teacher.id), method: :post, class: "elder-button-blue" %></p>
     </li>
   </ul>
 </div>
