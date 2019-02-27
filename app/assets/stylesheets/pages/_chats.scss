@@ -1,5 +1,6 @@
 
 /////////left////////////////////
+
 .chats-container{
   background-color:$light-gray;
   padding:10px;
@@ -29,16 +30,19 @@
 
 .chat-container{
 
+
+}
+
+.chat-container{
+
 }
 
 .messages--content{
   height:80vh;
-
   display:flex;
   flex-direction: column;
   overflow-y:scroll;
 }
-
 
 .message{
   background-color: $red;
@@ -54,5 +58,4 @@
 
 .message-form{
   display: flex;
-
 }
