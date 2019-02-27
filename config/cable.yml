@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= REDISCLOUD_URL %>
+  url: <%= ENV['REDISCLOUD_URL'] %>
   channel_prefix: elderly-share-a-skill_production
