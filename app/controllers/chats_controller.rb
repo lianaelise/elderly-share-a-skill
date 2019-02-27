@@ -6,6 +6,7 @@ class ChatsController < ApplicationController
   end
 
   def show
+    @chats = Chat.involving(current_user)
     @chat = Chat.find(params[:id])
     @other_user = current_user = @chat.sender ? @chat.recipient : @chat.sender
     @messages = @chat.messages.order(created_at: :asc).last(20)
