@@ -1,16 +1,32 @@
 <div class="container">
   <h1>My Appointments</h1>
   <h3 class="name-calendar"><%= current_user.type %> <%= current_user.first_name %></h3>
-  <%= month_calendar events: @appointments do |date, appointments| %>
-  <%= date.day %>
-  <% appointments.each do |appointment| %>
-  <div>
-    <p><%= appointment.student.first_name %></p>
-    <%#= appointment.start_time.to_formatted_s(:time) %>
-  </div>
-  <% end %>
-  <% end %>
-</div>
+
+
 <div class="container">
   <p><%= link_to 'All Teachers', teachers_path, class: "btn btn-primary" %></p>
 </div>
+
+
+ <% @appointments.each do |appt| %>
+        <% if appt.status == 'pending' && current_user.type == 'Teacher' %>
+          <strong><%= link_to "#{appt.student.first_name} #{appt.student.last_name}", student_path(appt.student_id) %></strong>
+          <%= link_to 'Accept', appointment_path(appt, :response => 'Accept'), method: :patch, class: "btn btn-success" %>
+          <%= link_to 'Decline', appointment_path(appt, :response => 'Decline'), method: :patch, class: "btn btn-danger" %>
+        <% end %>
+    <% end %>
+
+      <%= month_calendar events: @accepted_appt do |date, appointments| %>
+      <%= date.day %>
+        <% appointments.each do |appointment| %>
+          <% if current_user.type == 'Teacher' %>
+            <div>
+              <p><%= appointment.student.first_name %></p>
+              <%#= appointment.start_time.to_formatted_s(:time) %>
+            </div>
+          <% else %>
+            <p><%= appointment.teacher.first_name %></p>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
