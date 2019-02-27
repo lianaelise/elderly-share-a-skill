@@ -54,8 +54,10 @@ class AppointmentsController < ApplicationController
     @user = current_user
     if @user.type == "Student"
       @appointments = Appointment.where(student_id: current_user.id)
+      @accepted_appt = @appointments.reject{ |a| a.status != "Accepted" }
     else
       @appointments = Appointment.where(teacher_id: current_user.id)
+      @accepted_appt = @appointments.reject{ |a| a.status != "Accepted" }
     end
   #   # (teacher_id: current_user.id).or
   end
