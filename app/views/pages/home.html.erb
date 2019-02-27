@@ -1,17 +1,18 @@
 <div class="banner">
-<div class="titles">
-  <h1>Elder Share-a-Skill</h1>
-  <h2>Some Clever Slogan Here</h2>
-</div>
-<div class="search-form">
-  <%= form_tag teachers_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control text-center",
-    placeholder: "Search for a skill"
-  %>
-<% end %>
-</div>
+  <div class="titles">
+    <h1>Elder Share-a-Skill</h1>
+    <h2>Some Clever Slogan Here</h2>
+  </div>
+  <div class="search-form">
+    <%= form_tag teachers_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control text-center",
+      placeholder: "Search for a skill"
+    %>
+    <% end %>
+    <button id="geolocate" class="fas fa-map-pin"></button>
+  </div>
 </div>
 
 

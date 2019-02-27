@@ -2,6 +2,14 @@
   <h1>All Teachers</h1>
 </div>
 
+<div class="categories">
+  <%= form_tag teachers_path, method: :get do %>
+  <%= text_field_tag :query,
+      params[:query]
+    %>
+  <% end %>
+</div>
+<p><%= link_to 'See all Teachers', teachers_path, class: "btn btn-primary" %></p>
 
 <div class="map-wrapper">
   <div class="map-cards">
@@ -11,7 +19,7 @@
             <div class="my-card">
               <div class="card-img">
                 <% if teacher.picture.present? %>
-                  <%=  cl_image_tag teacher.picture, width:200, height: 200, :crop=>"fill" %>
+                  <%=  cl_image_tag teacher.picture, width: 100, :crop=>"fill" %>
                 <% end %>
               </div>
               <strong><%= link_to "#{teacher.first_name} #{teacher.last_name}", teacher_path(teacher.id)%></strong>

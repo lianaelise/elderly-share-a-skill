@@ -3,7 +3,9 @@ class TeachersController < ApplicationController
 
   def index
     if params[:query].present?
-      @teachers = Teacher.find_by_skill_or_subject(params[:query])
+      @teachers = Teacher.find_by_skill_or_subject(params[:query]).uniq
+    elsif params[:lat] && params[:lng]
+      @teachers = Teacher.near([params[:lat], params[:lng]], 80)
     else
       @teachers = Teacher.all
     end
