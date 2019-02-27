@@ -42,7 +42,7 @@ Subject.create(name: 'Math')
 Subject.create(name: 'Music')
 Subject.create(name: 'Photography')
 Subject.create(name: 'Philosophy')
-Subject.create(name: 'Sience')
+Subject.create(name: 'Science')
 Subject.create(name: 'Writing')
 Subject.create(name: 'Others')
 

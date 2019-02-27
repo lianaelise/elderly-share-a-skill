@@ -1,3 +1,5 @@
+// Sign-up Forms
+
 .form-heading {
   margin: 100px 0px 30px 0px;
 }
@@ -18,6 +20,14 @@ input:-webkit-autofill {
   -webkit-box-shadow: inset 0 0 0px 9999px $light-gray;
   -webkit-text-fill-color: $blue;
 }
+
+// input:focus, select:focus {
+//   -webkit-box-shadow: inset 0 0 0px 9999px $light-gray;
+// }
+
+// input:focus, select:active {
+//   -webkit-box-shadow: inset 0 0 0px 9999px $light-gray;
+// }
 
 #teacher_picture {
   font-size: 18px;
@@ -41,6 +51,112 @@ label {
   font-weight: lighter;
 }
 
+// Status bar
+
+$mainColor: $blue;
+$baseColor: $mint;
+$todo: $light-gray;
+
+.wizard-progress{
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  position:relative;
+  margin-top: 50px;
+
+  .step{
+    display: table-cell;
+    text-align: center;
+    vertical-align: top;
+    overflow: visible;
+    position:relative;
+    font-size: 14px;
+    color: $blue;
+
+    &:not(:last-child):before{
+      content: '';
+      display:block;
+      position: absolute;
+      left: 50%;
+      top: 34px;
+      background-color: $baseColor;
+      height: 1px;
+      width: 100%;
+    }
+
+    .node{
+      display: inline-block;
+      border: 1px solid $mainColor;
+      background-color: $todo;
+      border-radius: 18px;
+      height: 18px;
+      width: 18px;
+      position: absolute;
+      top: 25px;
+      left: 55%;
+      margin-left: -18px;
+    }
+
+    &.complete{
+      &:before{
+        background-color: $mainColor;
+      }
+      .node{
+        border-color: $mainColor;
+        background-color: $mainColor;
+      }
+    }
+
+    &.in-progress{
+      &:before{
+        background: $mainColor;
+        background: -moz-linear-gradient(left,  $mainColor 0%, $baseColor 100%);
+        background: -webkit-linear-gradient(left,  $mainColor 0%, $baseColor 100%);
+        background: linear-gradient(to right,  $mainColor 0%, $baseColor 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(     startColorstr='#{$mainColor}', endColorstr='#{$baseColor}',GradientType=1 );
+      }
+      .node{
+        border-color: $mainColor;
+        background: $mint;
+      }
+    }
+  }
+}
+
+// Check Box
+
+input[type="checkbox"] {
+ -webkit-appearance:none;/* Hides the default checkbox style */
+ height:.6em;
+ width:.6em;
+ cursor:pointer;
+ position:relative;
+ -webkit-transition: .15s;
+ border-radius: 1px;
+ border: 1px solid $blue;
+ background-color: $light-gray;
+}
+
+input[type="checkbox"]:checked {
+ background-color: $red;
+}
+
+input[type="checkbox"]:before, input[type="checkbox"]:checked:before {
+ position:absolute;
+ top:0;
+ left:0;
+ width:100%;
+ height:100%;
+ line-height:2em;
+ text-align:center;
+}
+
+// input[type="checkbox"]:hover:before {
+//  background: $red;
+// }
+
+// NOT USED
+
 // #appointment_start_time, #appointment_end_time {
   // -webkit-appearance: none;
 //   background-color: $light-gray;
@@ -62,6 +178,8 @@ label {
   font-size: 18px;
 }
 
+// Devise Forms
+
 .form-control {
   background-color: $light-gray;
   border-bottom-color: $blue;
@@ -77,4 +195,11 @@ label {
   -webkit-box-shadow: inset 0 0 0px 9999px $light-gray;
   -webkit-text-fill-color: $blue;
 }
+
+.form-control:focus {
+  -webkit-box-shadow: inset 0 0 0px 9999px $light-gray;
+  border-bottom-color: $blue;
+}
+
+
 
