@@ -78,13 +78,14 @@
       <% else %>
         <p> Share the love and say something great about <%= @teacher.first_name.capitalize %>!</p>
       <% end %>
-      <p><%= link_to 'Write a Comment!', new_teacher_review_path(@teacher), class: "btn btn-primary text-right" %></p>
+      <p><%= link_to 'Write a Comment!', new_teacher_review_path(@teacher), class: "elder-button-blue text-right" %></p>
     </div>
 </div>
 
 <!-- Navigation Buttons -->
 
 <div class="container">
-  <p><%= link_to 'Back', teachers_path, class: "btn btn-danger" %></p>
+  <br>
+  <p><%= link_to 'Back', teachers_path, class: "elder-button-red" %></p>
 
 </div>
