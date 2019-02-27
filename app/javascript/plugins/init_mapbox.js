@@ -22,7 +22,7 @@ const initMapbox = () => {
 
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/light-v9'
+      style: 'mapbox://styles/albrecht1397/cjslzw4ah5p7z1fpfok9loy04'
     });
 
     const markers = JSON.parse(mapElement.dataset.markers);
