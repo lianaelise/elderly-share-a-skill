@@ -13,7 +13,7 @@ class TeachersController < ApplicationController
       {
         lng: teacher.longitude,
         lat: teacher.latitude,
-        infoWindow: "#{teacher.first_name} #{teacher.first_name}"
+        infoWindow: "#{teacher.first_name} #{teacher.last_name}"
       }
     end
   end
