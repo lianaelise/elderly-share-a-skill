@@ -1,15 +1,17 @@
 <% other_user = current_user.sender?(chat) ? chat.recipient : chat.sender %>
 <%= link_to chat do %>
-  <div class="row chat">
-    <% if chat.messages.any? %>
-      <div class="col-md-6">
-        <%= cl_image_tag other_user.picture, width:50, height: 50, :crop=>"fill" %>
-        <%= other_user.first_name %>
-        <%= chat.messages.last.message_time %>
-      </div>
-      <div class="col-md-6 message-body">
-        <%= chat.messages.last.body %>
+<% if chat.messages.any? %>
+  <div class="message-menu-box">
+    <div class="message-menu-pic">
+      <%= cl_image_tag other_user.picture, width:50, height: 50, :crop=>"fill" %>
+    </div>
+    <div class="message-menu">
+      <%= other_user.first_name %>
+      <%= chat.messages.last.message_time %>
+
+      <%= chat.messages.last.body %>
       </div>
     <% end %>
   </div>
 <% end %>
+
