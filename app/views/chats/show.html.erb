@@ -1,26 +1,35 @@
+<!-- Shows Both "Chats" & "Messages" -->
+
 <div class="container">
-  <div class="content">
-    <div class="row">
-      <div class="col-xl-6 order-1">
-        <%= render @chats %>
+  <div class="row no-gutters">
+    <div class="col-sm-6">
+      <h2 class="text-center chat-show-header">All Open Chats</h2>
+    </div>
+    <div class="col-sm-6">
+      <h2 class="text-center message-show-header">Active Message</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= render @chats %>
+    </div>
+    <div class="col-sm-6 messages">
+      <div class="messages--content">
+        <%= render @messages %>
       </div>
-      <div class="col-xl-6 offset-6">
-          <%= render @messages %>
+    </div>
+    <div class="col-sm-6 offset-sm-6">
+      <div class="message-send chat--form">
+      <%= form_for [@chat, @message] do |f| %>
+
+        <%= f.text_field :body, placeholder: "Type message", autofocus: true, class: "message-form--input" %>
+        <%= f.hidden_field :chat_id, value: @chat.id %>
+        <%= f.submit "Send", class: "message-form--submit" %>
+      <% end %>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <!-- <div class="push"> -->
-    <div class="message-form">
-    <%= form_for [@chat, @message] do |f| %>
-      <%= f.text_field :body, placeholder: "Type message", autofocus: true, class: "message-form-input" %>
-      <%= f.hidden_field :chat_id, value: @chat.id %>
-      <%= f.submit "Send", class: "message-form-submit" %>
-    <% end %>
-    </div>
-  <!-- </div> -->
-</div>
 
 

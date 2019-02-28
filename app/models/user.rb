@@ -5,6 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :reviews
 
+  before_create :set_default_photo
+
+  def set_default_photo
+    default_picture = (image_path '')
+  end
+
   def sender?(conversation)
     self == conversation.sender
   end
