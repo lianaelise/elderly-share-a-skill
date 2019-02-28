@@ -9,5 +9,9 @@ import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
 import { geoLocate } from '../components/geolocation';
 
+import { initAutocomplete } from '../plugins/init_autocomplete';
+
 geoLocate();
 initMapbox();
+initAutocomplete();
+
