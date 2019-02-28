@@ -1,0 +1,11 @@
+<div class="container">
+<%= simple_form_for @teacher do |f| %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :address %>
+    <%= f.input :bio %>
+    <%= f.input :picture %>
+    <%= f.input :picture_cache, as: :hidden %>
+    <%= f.button :submit, "Update profile", class: "btn btn-primary" %>
+  <% end %>
+</div>

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :after_signup
 
-  resources :teachers, only: [:index, :show] do
+  resources :teachers, only: [:index, :show, :edit, :update] do
     collection do
       get 'profile'
     end
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :students, only: [:show] do
+  resources :students, only: [:show,:edit,:update] do
     collection do
       get 'profile'
     end
