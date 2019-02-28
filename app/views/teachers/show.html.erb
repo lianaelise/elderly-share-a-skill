@@ -78,7 +78,8 @@
       <% else %>
         <p> Share the love and say something great about <%= @teacher.first_name.capitalize %>!</p>
       <% end %>
-      <p><%= link_to 'Write a Comment!', new_teacher_review_path(@teacher), class: "elder-button-blue text-right" %></p>
+      <br>
+      <p><%= link_to 'Write a Comment!', new_teacher_review_path(@teacher), class: "elder-button-blue" %></p>
     </div>
 </div>
 
