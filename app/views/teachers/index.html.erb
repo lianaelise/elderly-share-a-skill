@@ -22,6 +22,7 @@
   <div class="map-cards">
     <div class="row card-group">
       <% @teachers.each do |teacher| %>
+      <div class="slide-top">
             <div class="my-card">
               <div class="card-img">
                 <% if teacher.picture.present? %>
@@ -32,6 +33,7 @@
               <!--   <%# teacher.skills.each do |skill| %>
               <p><%#= skill.name %></p>
               <%# end %> -->
+            </div>
             </div>
       <% end %>
       </div>
