@@ -62,7 +62,7 @@ Subject.create(name: 'Science')
 Subject.create(name: 'Writing')
 Subject.create(name: 'Others')
 
-puts 'Creating Sskills'
+puts 'Creating Skills'
 Skill.create(name:'Drawing',teacher_id: user1.id, subject_id: sub1.id)
 Skill.create(name:'Drawing',teacher_id: user11.id, subject_id: sub1.id)
 Skill.create(name:'Pâtisserie',teacher_id:user2.id, subject_id: sub2.id)
