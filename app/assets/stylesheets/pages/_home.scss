@@ -5,6 +5,10 @@ body {
   color: $blue;
 }
 
+a{
+  text-decoration: none !important;
+}
+
 .banner{
  background-image: url('https://res.cloudinary.com/mrcocktailbaron/image/upload/v1551260071/home.png');
  height: 100vh;
