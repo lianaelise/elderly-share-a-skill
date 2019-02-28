@@ -1,14 +1,26 @@
+<!-- Contains the Actual Messages -->
 
-<div class="message-box">
+<div class="message-box <%= 'other' if message.user == message.sender %>">
   <div class="message-pic">
     <%= cl_image_tag message.user.picture, width:50, height: 50, :crop=>"fill" %>
   </div>
-  <div class="message <%= 'other' if message.user == message.sender %>">
-    <p class="message-author">
-      <%= message.user.first_name.capitalize %> said on <%= message.message_time %>
-    </p>
-    <% message.body.lines.each do |line| %>
-      <p><%= line %></p>
-    <% end %>
+  <div class="message ">
+    <div class="message-body">
+      <div class="message-author">
+        <div class="message--header">
+          <span class="message--author">
+            <%= message.user.first_name.capitalize %>
+          </span>
+          <span class="message--time">
+            said on <%= message.message_time %>
+          </span>
+        </div>
+      </div>
+      <div class="message--text">
+          <% message.body.lines.each do |line| %>
+          <p><%= line %></p>
+          <% end %>
+      </div>
+    </div>
   </div>
 </div>

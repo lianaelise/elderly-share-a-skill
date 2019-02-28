@@ -1,8 +1,12 @@
+<!-- Pulls from Chat html -->
+
 <div class="container">
-<h1> Your Chats</h1>
-  <% if @chats.where(sender_id: current_user.id).present? %>
-    <%= render @chats %>
-  <% else %>
-    <p>You have no chats started at this time!</p>
-  <% end %>
+  <div class="panel panel-default">
+    <div class="chat-show-header">
+      <h1 class="text-center page-header">Your Chat Dashboard</h1>
+      <div class="panel-body">
+        <%= render @chats %>
+      </div>
+    </div>
+  </div>
 </div>
