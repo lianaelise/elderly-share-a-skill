@@ -7,12 +7,15 @@
   <p><%= link_to 'All Teachers', teachers_path, class: "elder-button-blue" %></p>
 </div>
 
-
  <% @appointments.each do |appt| %>
         <% if appt.status == 'pending' && current_user.type == 'Teacher' %>
           <strong><%= link_to "#{appt.student.first_name} #{appt.student.last_name}", student_path(appt.student_id) %></strong>
           <%= link_to 'Accept', appointment_path(appt, :response => 'Accept'), method: :patch, class: "elder-button-mint" %>
           <%= link_to 'Decline', appointment_path(appt, :response => 'Decline'), method: :patch, class: "elder-button-red" %>
+        <% elsif appt.status =='pending' %>
+          <p>You have sent a appointment request to
+          <strong><%= link_to "#{appt.teacher.first_name} #{appt.teacher.last_name}", teacher_path(appt.teacher_id)%></strong>.
+           Date: <%= appt.start_time.to_formatted_s(:short) %></p>
         <% end %>
     <% end %>
 
@@ -21,11 +24,11 @@
         <% appointments.each do |appointment| %>
           <% if current_user.type == 'Teacher' %>
             <div>
-              <p><%= appointment.student.first_name %></p>
+              <p><%= link_to "#{appointment.student.first_name} #{appointment.student.last_name}", student_path(appointment.student_id) %></p>
               <%#= appointment.start_time.to_formatted_s(:time) %>
             </div>
           <% else %>
-            <p><%= appointment.teacher.first_name %></p>
+            <p><%= link_to "#{appointment.teacher.first_name} #{appointment.teacher.last_name}", teacher_path(appointment.teacher_id) %></p>
           <% end %>
         <% end %>
       <% end %>
