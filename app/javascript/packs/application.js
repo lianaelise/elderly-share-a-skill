@@ -11,6 +11,8 @@ import { geoLocate } from '../components/geolocation';
 
 import { initAutocomplete } from '../plugins/init_autocomplete';
 
+import "../plugins/flatpickr"
+
 geoLocate();
 initMapbox();
 initAutocomplete();
