@@ -14,6 +14,11 @@
   color: white;
 }
 
+.simple-calendar .today a{
+  color: white;
+  text-decoration: none;
+}
+
 .simple-calendar .prev-month{
   background: $mint;
 }
