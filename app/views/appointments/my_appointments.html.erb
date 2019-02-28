@@ -6,18 +6,26 @@
 <div class="container">
   <p><%= link_to 'All Teachers', teachers_path, class: "elder-button-blue" %></p>
 </div>
+<br>
+<br>
 
  <% @appointments.each do |appt| %>
         <% if appt.status == 'pending' && current_user.type == 'Teacher' %>
+          <span>
           <strong><%= link_to "#{appt.student.first_name} #{appt.student.last_name}", student_path(appt.student_id) %></strong>
+
           <%= link_to 'Accept', appointment_path(appt, :response => 'Accept'), method: :patch, class: "elder-button-mint" %>
           <%= link_to 'Decline', appointment_path(appt, :response => 'Decline'), method: :patch, class: "elder-button-red" %>
+          </span>
         <% elsif appt.status =='pending' %>
           <p>You have sent a appointment request to
           <strong><%= link_to "#{appt.teacher.first_name} #{appt.teacher.last_name}", teacher_path(appt.teacher_id)%></strong>.
            Date: <%= appt.start_time.to_formatted_s(:short) %></p>
         <% end %>
+        <br>
     <% end %>
+
+
 
       <%= month_calendar events: @accepted_appt do |date, appointments| %>
       <%= date.day %>
