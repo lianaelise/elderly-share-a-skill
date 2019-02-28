@@ -1,15 +1,25 @@
+<!-- Contains the Chat Dashboard Message -->
+
 <% other_user = current_user.sender?(chat) ? chat.recipient : chat.sender %>
 <%= link_to chat do %>
-  <div class="row chat">
-    <% if chat.messages.any? %>
-      <div class="col-md-6">
+  <% if chat.messages.any? %>
+    <div class="chat-menu-box">
+      <div class="chat-menu-pic">
         <%= cl_image_tag other_user.picture, width:50, height: 50, :crop=>"fill" %>
-        <%= other_user.first_name %>
-        <%= chat.messages.last.message_time %>
       </div>
-      <div class="col-md-6 message-body">
-        <%= chat.messages.last.body %>
+      <div class="chat-menu">
+        <p>
+          <strong>From:</strong>
+          <%= other_user.first_name %>
+        </p>
+        <p>
+          <strong>Last Message Sent:</strong>
+          <%= chat.messages.last.message_time %>
+        </p>
+
+        <!-- %= chat.messages.last.body %> -->
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 <% end %>
+

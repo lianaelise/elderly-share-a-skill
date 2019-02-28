@@ -63,9 +63,9 @@
 
 <!-- Navigation Buttons -->
 
-  <p><%= link_to 'Write a Comment!', new_student_review_path(@student), class: "btn btn-primary" %></p>
+  <p><%= link_to 'Write a Comment!', new_student_review_path(@student), class: "elder-button-blue" %></p>
 
-  <p><%= link_to 'View Teachers', teachers_path, class: "btn btn-primary" %></p>
+  <p><%= link_to 'View Teachers', teachers_path, class: "elder-button-blue" %></p>
 
-  <p><%= link_to 'Chat', chats_path(sender_id: current_user.id, recipient_id: @student.id), method: :post, class: "btn btn-primary" %></p>
+  <p><%= link_to 'Chat', chats_path(sender_id: current_user.id, recipient_id: @student.id), method: :post, class: "elder-button-blue" %></p>
 </div>

@@ -1,0 +1,23 @@
+.name-calendar{
+  color: $red;
+}
+
+.calendar-heading{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  font-weight: bolder;
+}
+
+.simple-calendar .today{
+  background: $blue;
+  color: white;
+}
+
+.simple-calendar .prev-month{
+  background: $mint;
+}
+
+.simple-calendar .next-month{
+  background: $mint;
+}

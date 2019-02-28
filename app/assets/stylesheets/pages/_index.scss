@@ -1,7 +1,24 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "reviews";
+@import "show";
+@import "chats";
+@import "my_appointments";
 
+.banner-teachers{
+  background-image: url('https://images.unsplash.com/photo-1528984063924-226bc3e4be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80');
+  height: 50vh;
+  background-position: center;
+  text-align: center;
+}
+
+.banner-teachers select, input{
+  background-color: transparent;
+}
+
+.banner-details{
+  padding-top: 25px;
+}
 
 .my-card{
   background-color: white;
@@ -10,8 +27,9 @@
   text-align: center;
   padding-top: 15px;
   padding-bottom: 20px;
-  margin: 0 auto;
+  margin: 0;
   margin-bottom: 30px;
+  margin-right: 20px;
 }
 
 .card-img {
@@ -22,14 +40,30 @@
   height: calc(100vh - 60px);
   flex: 0 0 600px;
   position: sticky !important;
+  margin-top: 25px;
+  top: 0;
   // top: 0 !important;
+
+}
+
+.mapboxgl-canvas{
+  position: sticky !important;
+  position: fixed;
 }
 
 .map-wrapper {
   display: flex;
+  justify-content: space-around;
+  margin: auto 60px;
+
 }
 
 .map-cards {
   padding: 0 15px;
   flex-grow: 1;
+  margin-top: 25px;
+}
+
+.search-bar{
+  margin: auto 60px;
 }

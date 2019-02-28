@@ -1,15 +1,31 @@
-<div>
-  <h1>All Teachers</h1>
+<div class="banner-teachers">
+  <div class="banner-details">
+    <div class="search-bar">
+      <div>
+        <h1>All Teachers</h1>
+      </div>
+    </div>
 </div>
+
+<div class="categories">
+  <%= form_tag teachers_path, method: :get do %>
+  <%= text_field_tag :query,
+      params[:query]
+    %>
+  <% end %>
+<p><%= link_to 'See all Teachers', teachers_path, class: "elder-button-blue" %></p>
+</div>
+</div>
+
+
 <div class="map-wrapper">
   <div class="map-cards">
     <div class="row card-group">
       <% @teachers.each do |teacher| %>
-        <div class="col-4">
             <div class="my-card">
               <div class="card-img">
                 <% if teacher.picture.present? %>
-                  <%=  cl_image_tag teacher.picture, width:200, height: 200, :crop=>"fill" %>
+                  <%=  cl_image_tag teacher.picture, width: 200, height:200, :crop=>"fill" %>
                 <% end %>
               </div>
               <strong><%= link_to "#{teacher.first_name} #{teacher.last_name}", teacher_path(teacher.id)%></strong>
@@ -17,13 +33,13 @@
               <p><%#= skill.name %></p>
               <%# end %> -->
             </div>
-        </div>
       <% end %>
+      </div>
     </div>
+    <div
+      id="map"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
   </div>
-  <div
-    id="map"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  ></div>
-</div>
+
