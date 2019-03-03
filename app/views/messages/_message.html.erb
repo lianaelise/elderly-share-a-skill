@@ -2,7 +2,9 @@
 
 <div class="message-box <%= 'other' if message.user == message.sender %>">
   <div class="message-pic">
-    <%= cl_image_tag message.user.picture, width:50, height: 50, :crop=>"fill" %>
+    <%= link_to message.user do %>
+      <%= cl_image_tag message.user.picture, width:50, height: 50, :crop=>"fill" %>
+    <% end %>
   </div>
   <div class="message ">
     <div class="message-body">

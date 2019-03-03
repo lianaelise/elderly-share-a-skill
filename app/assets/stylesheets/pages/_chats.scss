@@ -25,6 +25,17 @@
   height: 60vh;
 }
 
+button {
+  background-color: transparent;
+  border: none;
+}
+
+.fa-share-square {
+  font-size: 24px;
+  color: $red;
+}
+
+
 // ---//--- Bottom (send messages) ---//--- //
 
 .message-send {
@@ -83,9 +94,6 @@ display:flex;
 }
 
 .message-body {
-  // line-height: 50%;
-
   font-size: 14px;
-  // overflow: scroll;
 }
 

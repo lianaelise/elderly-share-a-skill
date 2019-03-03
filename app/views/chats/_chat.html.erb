@@ -5,12 +5,17 @@
   <% if chat.messages.any? %>
     <div class="chat-menu-box">
       <div class="chat-menu-pic">
-        <%= cl_image_tag other_user.picture, width:50, height: 50, :crop=>"fill" %>
+        <!-- %= link_to other_user do %> -->
+          <%= cl_image_tag other_user.picture, width:50, height: 50, :crop=>"fill", class: "image-link" %>
+        <!-- % end %> -->
       </div>
       <div class="chat-menu">
         <p>
-          <strong>From:</strong>
-          <%= other_user.first_name %>
+          <strong>From:
+          <%= link_to other_user do %>
+            <%= other_user.first_name %>
+          <% end %>
+          </strong>
         </p>
         <p>
           <strong>Last Message Sent:</strong>

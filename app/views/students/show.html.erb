@@ -6,8 +6,8 @@
         <%=  cl_image_tag @student.picture, width:280, height: 280, :crop=>"fill" %>
         <% end %>
         <div class="contact-details">
-          <p>Email: <%= @student.email %></p>
-          <p>Phone: <%= @student.phone_number %></p>
+          <!-- <p>Email: %= @student.email %></p> -->
+          <!-- <p>Phone: %= @student.phone_number %></p> -->
         </div>
       </div>
       <div class="profile-contact">
@@ -18,13 +18,21 @@
         <div class="icons">
           <ul class = "list-inline">
             <li>
-              <i class="far fa-heart"></i>
+              <div class="show-icons" data-toggle="tooltip" data-placement="top" title="Number of Likes">
+                <i class="far fa-heart"></i>
+              </div>
             </li>
             <li>
-              <i class="far fa-smile"></i>
+              <div class="show-icons" data-toggle="tooltip" data-placement="top" title="Number of Appointments Booked">
+                <i class="far fa-smile"></i>
+                <%= @student.appointments.count %>
+              </div>
             </li>
             <li>
-              <i class="far fa-comment"></i>
+              <div class="show-icons" data-toggle="tooltip" data-placement="top" title="Number of Comments Received">
+                <i class="far fa-comment"></i>
+                <%= Review.where(reviewee_id: @student.id).count %>
+              </div>
             </li>
           </ul>
           <p>Bio: <%= @student.bio %></p>
@@ -34,38 +42,55 @@
   </div>
 </div>
 
+<div class="container">
+  <p class="text-right">
+    <%= link_to 'Chat', chats_path(sender_id: current_user.id, recipient_id: @student.id), method: :post, class: "elder-button-blue" %>
+  </p>
+</div>
+
 <!-- Reviews Section -->
 
 <div class="container">
   <h2 class="header-comments text-center"> Comments </h2>
-    <% @reviews = Review.where(reviewee_id: @student.id) %>
-    <% if @reviews.count > 0 %>
+  <% @reviews = Review.where(reviewee_id: @student.id) %>
+  <% if @reviews.count > 0 %>
     <div class="row card-group">
-      <% @reviews.each do |review| %>
-        <div class="col-4">
-          <div class="elder-card">
-            <p class="card-header my-card-header"> <strong>
-              <%= review.reviewer.first_name %> said... </strong>
-              <i class="fas fa-comments"></i>
-            </p>
-            <p class="card-body">
-              <div class="my-card-body">
-              <i class="fas fa-quote-left"></i> <%= review.body %> <i class="fas fa-quote-right"></i>
-              </div>
-            </p>
-          </div>
+    <% @reviews.each do |review| %>
+      <div class="col-4">
+        <div class="elder-card">
+          <p class="card-header my-card-header">
+            <% if review.reviewer.type == "Teacher" %>
+              <strong>
+              <%= link_to "#{review.reviewer.first_name} said...", teacher_path(review.reviewer_id) %>
+              </strong>
+            <% elsif review.reviewer.type == "Student" %>
+              <strong>
+              <%= link_to "#{review.reviewer.first_name} said...", student_path(review.reviewer_id) %>
+              </strong>
+            <% end %>
+            <i class="fas fa-comments"></i>
+          </p>
+          <p class="card-body">
+            <div class="my-card-body">
+            <i class="fas fa-quote-left"></i> <%= review.body %> <i class="fas fa-quote-right"></i>
+            </div>
+          </p>
         </div>
-      <% end %>
-    </div>
-    <% else %>
-      <p> Share the love and say something great about <%= @student.first_name.capitalize %>! </p>
+      </div>
     <% end %>
+    </div>
+  <% else %>
+    <p>
+      Share the love and say something great about <%= @student.first_name.capitalize %>!
+    </p>
+  <% end %>
+  <br>
+  <%= link_to 'Write a Comment!', new_student_review_path(@student), class: "elder-button-blue" %>
+</div>
 
 <!-- Navigation Buttons -->
 
-  <p><%= link_to 'Write a Comment!', new_student_review_path(@student), class: "elder-button-blue" %></p>
-
+<div class="container">
+  <br>
   <p><%= link_to 'View Teachers', teachers_path, class: "elder-button-blue" %></p>
-
-  <p><%= link_to 'Chat', chats_path(sender_id: current_user.id, recipient_id: @student.id), method: :post, class: "elder-button-blue" %></p>
 </div>

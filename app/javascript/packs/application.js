@@ -22,3 +22,7 @@ initAutocomplete();
 
 Rails.start();
 
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+

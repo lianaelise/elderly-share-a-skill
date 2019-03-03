@@ -26,7 +26,9 @@
 
         <%= f.text_field :body, placeholder: "Type message", autofocus: true, class: "message-form--input" %>
         <%= f.hidden_field :chat_id, value: @chat.id %>
-        <%= f.submit "Send", class: "message-form--submit" %>
+        <%= f.button'<i class="fas fa-share-square"></i>'.html_safe, class: "message-form--submit" %>
+
+       <!--  <= f.submit "", class: "message-form--submit fas fa-share-square" %> -->
       <% end %>
 
       </div>
