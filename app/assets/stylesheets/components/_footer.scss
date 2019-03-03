@@ -1,0 +1,30 @@
+footer{
+  width:100%;
+  background: $blue;
+}
+
+footer i {
+  color: $red;
+  padding-left: 15px;
+}
+
+footer p {
+  color: $red;
+}
+
+.follow-us{
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+}
+.footer-list{
+  padding-left: 10px;
+}
+
+.flex-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  margin: auto 30px;
+}
