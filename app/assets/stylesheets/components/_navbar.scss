@@ -83,3 +83,16 @@
   z-index: 1;
 }
 
+.notifications {
+  position: absolute;
+  top: 10px;
+  right: 38px;
+  width: 20px;
+  height: 20px;
+  background: $mint;
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  z-index: 999;
+  line-height: 20px;
+}

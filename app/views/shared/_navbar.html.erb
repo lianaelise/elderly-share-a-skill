@@ -11,7 +11,9 @@
     <%= link_to "Messages", chats_path , class: "navbar-wagon-item navbar-wagon-link" %>
     <!-- Avatar with dropdown menu -->
     <div class="navbar-wagon-item" data-behavior="notifications-counter">
-      <span id="counter" class="notifications text-center"><%= current_user.notifications.unread.size%> </span>
+      <% if current_user.notifications.unread.any?%>
+        <span id="counter" class="notifications text-center"><%= current_user.notifications.unread.size%></span>
+      <% end %>
       <div class="dropdown" data-behavior="notifications">
       <% if current_user.picture.present? %>
         <%= cl_image_tag current_user.picture, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
