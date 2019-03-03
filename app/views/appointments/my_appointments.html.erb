@@ -1,12 +1,6 @@
 <div class="container">
   <h1>My Appointments</h1>
   <h3 class="name-calendar"><%= current_user.type %> <%= current_user.first_name %></h3>
-
-
-<div class="container">
-  <p><%= link_to 'All Teachers', teachers_path, class: "elder-button-blue" %></p>
-</div>
-<br>
 <br>
 
  <% @appointments.each do |appt| %>
@@ -31,14 +25,14 @@
       <%= date.day %>
         <% appointments.each do |appointment| %>
           <% if current_user.type == 'Teacher' %>
-            <div>
+            <div class="student-hours" data-toggle="tooltip" data-placement="top" title = <%= "#{appointment.start_time.to_s(:time)}-#{appointment.end_time.to_s(:time)}"%> >
               <p><%= link_to "#{appointment.student.first_name} #{appointment.student.last_name}", student_path(appointment.student_id) %></p>
-              <p> <%= appointment.start_time%></p>
             </div>
           <% else %>
-            <p><%= link_to "#{appointment.teacher.first_name} #{appointment.teacher.last_name}", teacher_path(appointment.teacher_id) %></p>
-            <p> <%=  %> </p>
-          <% end %>
+            <div class="teacher-hours" data-toggle="tooltip" data-placement="top" title = <%= "#{appointment.start_time.to_s(:time)}-#{appointment.end_time.to_s(:time)}"%> >
+                <p><%= link_to "#{appointment.teacher.first_name} #{appointment.teacher.last_name}", teacher_path(appointment.teacher_id) %></p>
+            </div>
+           <% end %>
         <% end %>
       <% end %>
     </div>
