@@ -9,17 +9,15 @@
 <% end %>
 
 
- <% @appointments.each do |appt| %>
-        <% if appt.status == 0 && current_user.type == 'Teacher' %>
+ <% @pending_appt.each do |appt| %>
+        <% if appt.guest == current_user %>
           <span>
-          <strong><%= link_to "#{appt.student.first_name} #{appt.student.last_name}", student_path(current_user.id) %></strong>
-
-          <%= link_to 'Accept', appointment_path(appt, :response => :accepted), method: :patch, class: "elder-button-mint" %>
-          <%= link_to 'Decline', appointment_path(appt, :response => :rejected), method: :patch, class: "elder-button-red" %>
-          </span>
-        <% elsif appt.status == 0 %>
+          <strong><%= link_to "#{appt.guest.first_name} #{appt.guest.last_name}", user_url(appt.guest) %></strong>
+            <%= render 'appointments/request', appointment: appt %>
+           </span>
+        <% elsif appt.organizer == current_user %>
           <p>You have sent a appointment request to
-          <strong><%= link_to "#{appt.teacher.first_name} #{appt.teacher.last_name}", teacher_path(current_user.id)%></strong>.
+          <strong><%= link_to "#{appt.guest.first_name} #{appt.guest.last_name}", user_url(appt.guest)%></strong>.
            Date: <%= appt.start_time.to_formatted_s(:short) %></p>
         <% end %>
         <br>
@@ -27,17 +25,17 @@
 
 
 
-      <%= month_calendar events: @appointments do |date, appointments| %>
+      <%= month_calendar events: @not_pending_appt do |date, appointments| %>
       <%= date.day %>
         <% appointments.each do |appointment| %>
           <% if current_user.id != appointment.organizer_id %>
             <div>
               <div class="student-hours" data-toggle="tooltip" data-placement="top" title = <%= "#{appointment.start_time.to_s(:time)}"%> >
-              <p><%= link_to "#{appointment.organizer.first_name} #{appointment.organizer.last_name} #{appointment.status}", "#" %></p>
+              <p><%= link_to "#{appointment.organizer.first_name} #{appointment.organizer.last_name} #{appointment.status}", user_url(appointment.organizer) %></p>
             </div>
           <% else %>
             <div class="teacher-hours" data-toggle="tooltip" data-placement="top" title = <%= "#{appointment.start_time.to_s(:time)}"%> >
-            <p><%= link_to "#{appointment.guest.first_name} #{appointment.guest.last_name} #{appointment.status}", "#" %></p>
+            <p><%= link_to "#{appointment.guest.first_name} #{appointment.guest.last_name} #{appointment.status}", user_url(appointment.guest) %></p>
           <% end %>
         <% end %>
       <% end %>
