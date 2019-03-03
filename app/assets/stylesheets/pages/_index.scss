@@ -8,8 +8,11 @@
 .banner-teachers{
   background-image: url('https://images.unsplash.com/photo-1528984063924-226bc3e4be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80');
   height: 50vh;
+  width: 100%;
   background-position: center;
   text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .banner-teachers select, input{

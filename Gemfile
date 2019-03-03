@@ -22,6 +22,7 @@ gem 'cloudinary', '~> 1.9.1'
 gem 'wicked'
 gem 'geocoder'
 gem 'chronic'
+gem 'sweetalert2'
 
 gem "simple_calendar", "~> 2.0"
 

@@ -1,7 +1,13 @@
 <div class="container">
   <h1>My Appointments</h1>
   <h3 class="name-calendar"><%= current_user.type %> <%= current_user.first_name %></h3>
-<br>
+
+<% if @appointments.count <= 0  %>
+  <div class="alert alert-info" role="alert">
+    <strong>Heads up!</strong>You do not have any meetings yet!
+  </div>
+<% end %>
+
 
  <% @appointments.each do |appt| %>
         <% if appt.status == 0 && current_user.type == 'Teacher' %>
