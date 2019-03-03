@@ -8,7 +8,7 @@ class Appointment < ApplicationRecord
     where("appointments.guest_id = ?", user).pending
   }
 
-  # after_update :create_notification, if: :accepted?
+  after_update :create_notification, if: :accepted?
 
   def appointment_time
     minutes = start_time.min > 0 ? ":%M" : ""
@@ -17,12 +17,12 @@ class Appointment < ApplicationRecord
 
   private
 
-  # def create_notification
-  #   Notification.create(
-  #     recipient: organizer,
-  #     actor: guest,
-  #     action: 'accepted',
-  #     notifiable: self
-  #   )
-  # end
+  def create_notification
+    Notification.create(
+      recipient: organizer,
+      actor: guest,
+      action: 'accepted',
+      notifiable: self
+    )
+  end
 end
