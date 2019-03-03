@@ -10,8 +10,11 @@
     <%= link_to "Appointments", my_appointments_appointments_path , class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to "Messages", chats_path , class: "navbar-wagon-item navbar-wagon-link" %>
     <!-- Avatar with dropdown menu -->
-    <div class="navbar-wagon-item">
-      <div class="dropdown">
+    <div class="navbar-wagon-item" data-behavior="notifications-counter">
+      <% if current_user.notifications.unread.any?%>
+        <span id="counter" class="notifications text-center"><%= current_user.notifications.unread.size%></span>
+      <% end %>
+      <div class="dropdown" data-behavior="notifications">
       <% if current_user.picture.present? %>
         <%= cl_image_tag current_user.picture, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
         <% else %>
@@ -30,6 +33,15 @@
               <%= link_to "Profile", profile_students_path(@student), class: "navbar-wagon-item navbar-wagon-link" %>
             <% end %>
           </li>
+          <li>
+            <div id="notifications">
+              <li>
+                <% current_user.notifications.unread.each do |notification| %>
+                <%= render partial: "notifications/#{notification.notifiable_type.underscore.pluralize}/#{notification.action}", locals: {notification: notification} %>
+              <% end %>
+              </li>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -47,7 +59,7 @@
         <% if user_signed_in? %>
         <li>
           <%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+            <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
           <% end %>
         </li>
         <li>

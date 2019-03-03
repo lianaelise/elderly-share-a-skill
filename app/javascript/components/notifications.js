@@ -1,3 +1,4 @@
+import Rails from 'rails-ujs';
 import { setCallback } from '../client/notifications';
 
 function markAsRead() {
@@ -10,6 +11,7 @@ function markAsRead() {
           credentials: 'same-origin'
         })
   .then(response => {
+    console.log(response)
     if (response.status === 200) {
       refreshCounter(0);
     }
