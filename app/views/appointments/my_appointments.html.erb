@@ -33,11 +33,15 @@
           <% if current_user.type == 'Teacher' %>
             <div>
               <p><%= link_to "#{appointment.student.first_name} #{appointment.student.last_name}", student_path(appointment.student_id) %></p>
-              <%#= appointment.start_time.to_formatted_s(:time) %>
+              <p> <%= appointment.start_time%></p>
             </div>
           <% else %>
             <p><%= link_to "#{appointment.teacher.first_name} #{appointment.teacher.last_name}", teacher_path(appointment.teacher_id) %></p>
+            <p> <%=  %> </p>
           <% end %>
         <% end %>
       <% end %>
     </div>
+
+
+
