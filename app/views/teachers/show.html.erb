@@ -2,11 +2,11 @@
   <div class="row">
     <div class="profile-container">
       <div class="profile-contact">
-      <div class="profile-img">
-        <% if @teacher.picture.present? %>
-        <%=  cl_image_tag @teacher.picture, width:280, height: 280, :crop=>"fill" %>
-        <% end %>
-      </div>
+        <div class="profile-img">
+          <% if @teacher.picture.present? %>
+          <%=  cl_image_tag @teacher.picture, width:280, height: 280, :crop=>"fill" %>
+          <% end %>
+        </div>
         <div class="contact-details">
           <!-- <p>Email: %= @teacher.email %></p> -->
           <!-- <p>Phone: %= @teacher.phone_number %></p> -->
@@ -48,21 +48,51 @@
     </div>
   </div>
 </div>
-
-
 <div class="container text-right">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <p><%= link_to 'Make an Appointment!', new_teacher_appointment_path(@teacher), class: "elder-button-blue" %></p>
+      <!-- Button trigger modal -->
+<button type="button" class="elder-button-blue" data-toggle="modal" data-target="#exampleModal">
+Make an Appointment!
+</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="Make an Appointment">
+            <%= simple_form_for [@teacher, @appointment] do |f| %>
+            <%= f.error_notification %>
+            <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+            <div class="form-inputs">
+              <%= f.input :start_time, as: :string, required: false, label: "Dates", placeholder: "From", input_html: { class: "datepicker" }%>
+              <%= f.input :end_time, as: :string, required: false, label: '&nbsp;'.html_safe, placeholder: "To", input_html: { class: "datepicker" }%>
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, class: "elder-button-blue" %>
+            </div>
+            <% end %>
+            <br>
+            <%= link_to 'Back', teacher_path(@teacher), class: "elder-button-red" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
     </li>
     <li class="list-inline-item">
       <p><%= link_to 'Chat', chats_path(sender_id: current_user.id, recipient_id: @teacher.id), method: :post, class: "elder-button-blue" %></p>
     </li>
   </ul>
 </div>
-
 <!-- Reviews -->
-
 <div class="container">
     <h2 class="header-comments text-center"> Comments </h2>
     <% @reviews = Review.where(reviewee_id: @teacher.id) %>
@@ -81,21 +111,22 @@
               </div>
             </p>
           </div>
-        </div>
-        <% end %>
+        </p>
       </div>
-      <% else %>
-        <p> Share the love and say something great about <%= @teacher.first_name.capitalize %>!</p>
-      <% end %>
-      <br>
-      <p><%= link_to 'Write a Comment!', new_teacher_review_path(@teacher), class: "elder-button-blue" %></p>
     </div>
-</div>
-
-<!-- Navigation Buttons -->
-
-<div class="container">
+    <% end %>
+  </div>
+  <% else %>
+  <p> Share the love and say something great about <%= @teacher.first_name.capitalize %>!</p>
+  <% end %>
   <br>
-  <p><%= link_to 'Back', teachers_path, class: "elder-button-red" %></p>
-
+  <p><%= link_to 'Write a Comment!', new_teacher_review_path(@teacher), class: "elder-button-blue" %></p>
 </div>
+</div>
+<!-- Navigation Buttons -->
+<div class="container">
+<br>
+<p><%= link_to 'Back', teachers_path, class: "elder-button-red" %></p>
+</div>
+
+

@@ -11,7 +11,7 @@ a{
 
 .banner{
  background-image: url('https://res.cloudinary.com/mrcocktailbaron/image/upload/v1551260071/home.png');
- height: 100vh;
+ height: calc(100vh - 60px);
  background-size: cover;
  background-position: center;
  object-fit: cover;
