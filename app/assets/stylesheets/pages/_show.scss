@@ -36,3 +36,13 @@
   font-weight: bolder;
 }
 
+.show-icons {
+  color: $red;
+  // font-size: 14px;
+}
+
+.tooltip-inner {
+  background: $red;
+  color: $light-gray;
+  border: 1px solid $red;
+}
