@@ -8,12 +8,15 @@ class Appointment < ApplicationRecord
     where("appointments.guest_id = ?", user).pending
   }
 
+
   after_update :create_notification, if: :accepted?
+
 
   def appointment_time
     minutes = start_time.min > 0 ? ":%M" : ""
     start_time.in_time_zone("Jerusalem").strftime("%A, %d %B %Y at %-l#{minutes} %P")
   end
+
 
   private
 
@@ -25,4 +28,5 @@ class Appointment < ApplicationRecord
       notifiable: self
     )
   end
+
 end
