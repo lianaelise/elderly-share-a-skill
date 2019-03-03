@@ -30,9 +30,11 @@
                 <% end %>
               </div>
               <strong><%= link_to "#{teacher.first_name} #{teacher.last_name}", teacher_path(teacher.id)%></strong>
-              <!--   <%# teacher.skills.each do |skill| %>
-              <p><%#= skill.name %></p>
-              <%# end %> -->
+              <div class="skills">
+              <% teacher.skills.each do |skill| %>
+              <p><%= skill.name %></p>
+              <% end %>
+              </div>
             </div>
             </div>
       <% end %>
