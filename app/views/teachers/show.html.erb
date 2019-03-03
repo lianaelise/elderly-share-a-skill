@@ -93,40 +93,52 @@ Make an Appointment!
   </ul>
 </div>
 <!-- Reviews -->
+
 <div class="container">
-    <h2 class="header-comments text-center"> Comments </h2>
-    <% @reviews = Review.where(reviewee_id: @teacher.id) %>
-    <% if @reviews.count > 0 %>
+  <h2 class="header-comments text-center"> Comments </h2>
+  <% @reviews = Review.where(reviewee_id: @teacher.id) %>
+  <% if @reviews.count > 0 %>
+
     <div class="row card-group">
-        <% @reviews.each do |review| %>
-        <div class="col-4">
-          <div class="elder-card">
-            <p class="card-header my-card-header"> <strong>
-            <%= link_to "#{review.reviewer.first_name} said...", student_path(review.reviewer_id) %> </strong>
-            <i class="fas fa-comments"></i>
-            </p>
-            <p class="card-body">
-              <div class="my-card-body">
-                <i class="fas fa-quote-left"></i> <%= review.body %> <i class="fas fa-quote-right"></i>
-              </div>
-            </p>
-          </div>
-        </p>
+      <% @reviews.each do |review| %>
+      <div class="col-4">
+        <div class="elder-card">
+          <p class="card-header my-card-header">
+          <% if review.reviewer.type == "Student" %>
+            <strong>
+            <%= link_to "#{review.reviewer.first_name} said...", student_path(review.reviewer_id) %>
+            </strong>
+          <% elsif review.reviewer.type == "Teacher" %>
+            <strong>
+            <%= link_to "#{review.reviewer.first_name} said...", teacher_path(review.reviewer_id) %>
+            </strong>
+          <% end %>
+          <i class="fas fa-comments"></i>
+          </p>
+          <p class="card-body">
+            <div class="my-card-body">
+              <i class="fas fa-quote-left"></i> <%= review.body %> <i class="fas fa-quote-right"></i>
+            </div>
+          </p>
+        </div>
       </div>
+      <% end %>
     </div>
-    <% end %>
-  </div>
   <% else %>
-  <p> Share the love and say something great about <%= @teacher.first_name.capitalize %>!</p>
+    <p> Share the love and say something great about <%= @teacher.first_name.capitalize %>!
+    </p>
   <% end %>
   <br>
-  <p><%= link_to 'Write a Comment!', new_teacher_review_path(@teacher), class: "elder-button-blue" %></p>
+  <%= link_to 'Write a Comment!', new_teacher_review_path(@teacher), class: "elder-button-blue" %>
 </div>
-</div>
+
+
 <!-- Navigation Buttons -->
 <div class="container">
 <br>
-<p><%= link_to 'Back', teachers_path, class: "elder-button-red" %></p>
+  <p>
+    <%= link_to 'Back', teachers_path, class: "elder-button-red" %>
+  </p>
 </div>
 
 
