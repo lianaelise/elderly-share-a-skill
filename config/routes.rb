@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
 
   resources :chats, only: [:index, :create, :show] do
+    resources :appointments, only: [:create]
    resources :messages, only: [:create]
   end
 
@@ -28,9 +29,15 @@ Rails.application.routes.draw do
     collection do
       get 'profile'
     end
+    resources :appointments, only: [:new, :create]
     resources :reviews, only: [:new, :create]
   end
-  resources :appointments do
+
+  resources :appointments, only: :index do
+    member do
+      post :accept
+      post :reject
+    end
     collection do
       get 'my-appointments'
     end

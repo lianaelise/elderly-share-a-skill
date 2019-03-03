@@ -1,7 +1,10 @@
 import "bootstrap";
 
+import Rails from 'rails-ujs';
 import '../components/message-form.js';
 import '../components/messages.js';
+import '../components/chat_widgets';
+import '../components/notifications';
 
 import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the stylesheet_pack_tag in the layout!
 import { initMapbox } from '../plugins/init_mapbox';
@@ -17,6 +20,9 @@ geoLocate();
 initMapbox();
 initAutocomplete();
 
+Rails.start();
+
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
