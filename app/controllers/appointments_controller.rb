@@ -20,15 +20,8 @@ class AppointmentsController < ApplicationController
 
   def my_appointments
     @appointments = Appointment.where(organizer_id: current_user.id).or(Appointment.where(guest_id: current_user.id))
-    # @my_app = []
-    # @appointments.each do |app|
-    #   if app.organizer_id == current_user.id
-    #     @my_app << Appointment.where(organizer_id: current_user.id)
-    #   else
-    #     @my_app<< Appointment.where(guest_id: current_user.id)
-    #   end
-    # end
-    # @accepted_appt = @appointments.select{ |a| a.status == 1 }
+    @not_pending_appt = @appointments.where.not(status: :pending)
+    @pending_appt = @appointments.where(status: :pending)
   end
 
   private
