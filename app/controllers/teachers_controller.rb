@@ -20,6 +20,7 @@ class TeachersController < ApplicationController
 
   def show
     @teacher = Teacher.find(params[:id])
+    @appointment = Appointment.new
   end
 
   def profile
