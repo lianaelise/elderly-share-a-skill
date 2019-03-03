@@ -17,3 +17,6 @@ geoLocate();
 initMapbox();
 initAutocomplete();
 
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})

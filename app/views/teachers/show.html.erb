@@ -8,8 +8,8 @@
           <% end %>
         </div>
         <div class="contact-details">
-          <p>Email: <%= @teacher.email %></p>
-          <p>Phone: <%= @teacher.phone_number %></p>
+          <!-- <p>Email: %= @teacher.email %></p> -->
+          <!-- <p>Phone: %= @teacher.phone_number %></p> -->
         </div>
       </div>
       <div class="details">
@@ -18,13 +18,21 @@
         <div class="icons">
           <ul class = "list-inline">
             <li>
-              <i class="far fa-heart"></i>
+              <div class="show-icons" data-toggle="tooltip" data-placement="top" title="Number of Likes">
+                <i class="far fa-heart"></i>
+              </div>
             </li>
             <li>
-              <i class="far fa-smile"></i>
+              <div class="show-icons" data-toggle="tooltip" data-placement="top" title="Number of Appointments Booked">
+                <i class="far fa-smile"></i>
+                <%= @teacher.appointments.count %>
+              </div>
             </li>
             <li>
-              <i class="far fa-comment"></i>
+                <div class="show-icons" data-toggle="tooltip" data-placement="top" title="Number of Comments Received">
+                  <i class="far fa-comment"></i>
+                  <%= Review.where(reviewee_id: @teacher.id).count %>
+                </div>
             </li>
           </ul>
           <div class="skills">
@@ -40,9 +48,6 @@
     </div>
   </div>
 </div>
-
-
-
 <div class="container text-right">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -89,20 +94,22 @@ Make an Appointment!
 </div>
 <!-- Reviews -->
 <div class="container">
-  <h2 class="header-comments text-center"> Comments </h2>
-  <% @reviews = Review.where(reviewee_id: @teacher.id) %>
-  <% if @reviews.count > 0 %>
-  <div class="row card-group">
-    <% @reviews.each do |review| %>
-    <div class="col-4">
-      <div class="elder-card">
-        <p class="card-header my-card-header"> <strong>
-          <%= review.reviewer.first_name %> said... </strong>
-          <i class="fas fa-comments"></i>
-        </p>
-        <p class="card-body">
-          <div class="my-card-body">
-            <i class="fas fa-quote-left"></i> <%= review.body %> <i class="fas fa-quote-right"></i>
+    <h2 class="header-comments text-center"> Comments </h2>
+    <% @reviews = Review.where(reviewee_id: @teacher.id) %>
+    <% if @reviews.count > 0 %>
+    <div class="row card-group">
+        <% @reviews.each do |review| %>
+        <div class="col-4">
+          <div class="elder-card">
+            <p class="card-header my-card-header"> <strong>
+            <%= link_to "#{review.reviewer.first_name} said...", student_path(review.reviewer_id) %> </strong>
+            <i class="fas fa-comments"></i>
+            </p>
+            <p class="card-body">
+              <div class="my-card-body">
+                <i class="fas fa-quote-left"></i> <%= review.body %> <i class="fas fa-quote-right"></i>
+              </div>
+            </p>
           </div>
         </p>
       </div>
