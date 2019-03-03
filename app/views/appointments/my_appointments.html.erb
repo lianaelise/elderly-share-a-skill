@@ -10,16 +10,16 @@
 <br>
 
  <% @appointments.each do |appt| %>
-        <% if appt.status == 'pending' && current_user.type == 'Teacher' %>
+        <% if appt.status == 0 && current_user.type == 'Teacher' %>
           <span>
-          <strong><%= link_to "#{appt.student.first_name} #{appt.student.last_name}", student_path(appt.student_id) %></strong>
+          <strong><%= link_to "#{appt.student.first_name} #{appt.student.last_name}", student_path(current_user.id) %></strong>
 
-          <%= link_to 'Accept', appointment_path(appt, :response => 'Accept'), method: :patch, class: "elder-button-mint" %>
-          <%= link_to 'Decline', appointment_path(appt, :response => 'Decline'), method: :patch, class: "elder-button-red" %>
+          <%= link_to 'Accept', appointment_path(appt, :response => :accepted), method: :patch, class: "elder-button-mint" %>
+          <%= link_to 'Decline', appointment_path(appt, :response => :rejected), method: :patch, class: "elder-button-red" %>
           </span>
-        <% elsif appt.status =='pending' %>
+        <% elsif appt.status == 0 %>
           <p>You have sent a appointment request to
-          <strong><%= link_to "#{appt.teacher.first_name} #{appt.teacher.last_name}", teacher_path(appt.teacher_id)%></strong>.
+          <strong><%= link_to "#{appt.teacher.first_name} #{appt.teacher.last_name}", teacher_path(current_user.id)%></strong>.
            Date: <%= appt.start_time.to_formatted_s(:short) %></p>
         <% end %>
         <br>
@@ -27,16 +27,16 @@
 
 
 
-      <%= month_calendar events: @accepted_appt do |date, appointments| %>
+      <%= month_calendar events: @appointments do |date, appointments| %>
       <%= date.day %>
         <% appointments.each do |appointment| %>
-          <% if current_user.type == 'Teacher' %>
+          <% if current_user.id != appointment.organizer_id %>
             <div>
-              <p><%= link_to "#{appointment.student.first_name} #{appointment.student.last_name}", student_path(appointment.student_id) %></p>
+              <p><%= link_to "#{appointment.organizer.first_name} #{appointment.organizer.last_name} #{appointment.status}", "#" %></p>
               <%#= appointment.start_time.to_formatted_s(:time) %>
             </div>
           <% else %>
-            <p><%= link_to "#{appointment.teacher.first_name} #{appointment.teacher.last_name}", teacher_path(appointment.teacher_id) %></p>
+            <p><%= link_to "#{appointment.guest.first_name} #{appointment.guest.last_name} #{appointment.status}", "#" %></p>
           <% end %>
         <% end %>
       <% end %>

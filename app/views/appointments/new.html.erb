@@ -1,12 +1,11 @@
 <div class="container">
   <div class="Make an Appointment">
-    <%= simple_form_for [@teacher, @appointment] do |f| %>
+    <%= simple_form_for [@guest, @appointment] do |f| %>
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
       <div class="form-inputs">
         <%= f.input :start_time, as: :string, required: false, label: "Dates", placeholder: "From", input_html: { class: "datepicker" }%>
-        <%= f.input :end_time, as: :string, required: false, label: '&nbsp;'.html_safe, placeholder: "To", input_html: { class: "datepicker" }%>
       </div>
 
       <div class="form-actions">
@@ -15,6 +14,6 @@
     <% end %>
 
     <br>
-    <%= link_to 'Back', teacher_path(@teacher), class: "elder-button-red" %>
+    <%= link_to 'Back', "#", class: "elder-button-red" %>
   </div>
 </div>

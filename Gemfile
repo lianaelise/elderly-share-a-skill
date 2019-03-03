@@ -21,6 +21,7 @@ gem 'carrierwave', '~> 1.2'
 gem 'cloudinary', '~> 1.9.1'
 gem 'wicked'
 gem 'geocoder'
+gem 'chronic'
 
 gem "simple_calendar", "~> 2.0"
 
