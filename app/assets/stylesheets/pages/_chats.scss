@@ -11,7 +11,6 @@
 .all-chats {
   max-width: 25%;
   min-width: 25%;
-  margin-top: 35px;
   flex-grow: 1;
 }
 
@@ -147,5 +146,17 @@ button {
   padding: 0 15px;
 }
 
+.messages--content{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.chat-title p{
+  margin: 0;
+  text-align: center;
+  background-color: $red;
+  padding: 15px 10px;
+}
 
 
