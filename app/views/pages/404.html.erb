@@ -341,14 +341,17 @@
     }
 
     .border-button {
-      color: rgba(238, 112, 110, 1) !important;
-      border-color: rgba(238, 112, 110, 1) !important;
+      color: #FFFFFF !important;
+      border-color: #FFFFFF !important;
     }
     .button {
-      background-color: rgba(238, 112, 110, 1) !important;
-      color:  !important;
+      background-color: #FFFFFF !important;
+      color: #FFFFFF !important;
     }
 
+    .shadow {
+      box-shadow: 0 0 60px #000000;
+    }
 
 </style>
 
@@ -360,29 +363,27 @@
   <div class="post right"></div>
   <div class="pane">
     <div class="headline sign-text-color">
-      500
+      404
     </div>
     <div class="context sign-text-color">
-      Looks like we're having<br>
-      some server issues.
+      Oops, the page you're<br>
+      looking for does not exist.
     </div>
   </div>
 </div>
 <div class="text-container">
   <div class="headline secondary-text-color">
-    500
+    404
   </div>
   <div class="context primary-text-color">
-
     <p>
-      Go back to the previous page and try again.
+      You may want to head back to the homepage.<br>
       If you think something is broken, report a problem.
     </p>
-
-
   </div>
   <div class="buttons-container">
-    <a  class="border-button" href="#" target="_blank"><span class="fa fa-home"></span> Home page</a>
+    <a class="border-button" href="#" target="_blank"><span class="fa fa-home"></span> Home page</a>
+    <a class="border-button" href="mailto:#" target="_blank"><span class="fa fa-warning"></span> Report problem</a>
   </div>
 </div>
 
@@ -445,7 +446,7 @@
 
 
      ErrorPage.prototype.handleStatusFetchSuccess = function (pageType, data) {
-       if (pageType == '500') {
+       if (pageType == '503') {
          $('#replace-with-fetched-data').html(data.status.description);
        } else {
          if (!!data.scheduled_maintenances.length) {
@@ -472,7 +473,7 @@
        var url = ''
          , self = this;
 
-       if (pageType == '500') {
+       if (pageType == '503') {
          url = pageUrl + '/api/v2/status.json';
        }
        else {
@@ -491,7 +492,7 @@
        });
 
      };
-     var ep = new ErrorPage('body', "500", "sign");
+     var ep = new ErrorPage('body', "404", "sign");
      ep.initialize();
 
      // hack to make sure content stays centered >_<
