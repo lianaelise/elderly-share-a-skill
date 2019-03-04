@@ -8,7 +8,8 @@
     <%= text_field_tag :query,
       params[:query],
       class: "form-control text-center",
-      placeholder: "Search for a skill"
+      placeholder: "Search for a skill",
+      autocomplete:"off"
     %>
     <% end %>
     <button id="geolocate" class="fas fa-map-pin"></button>

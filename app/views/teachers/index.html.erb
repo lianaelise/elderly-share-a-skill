@@ -10,7 +10,8 @@
 <div class="categories">
   <%= form_tag teachers_path, method: :get do %>
   <%= text_field_tag :query,
-      params[:query]
+      params[:query],
+      autocomplete:"off"
     %>
   <% end %>
 <p><%= link_to 'See all Teachers', teachers_path, class: "elder-button-blue" %></p>
@@ -22,29 +23,29 @@
   <div class="map-cards">
     <div class="row card-group">
       <% @teachers.each do |teacher| %>
-      <div class="slide-top">
-            <div class="my-card">
-              <div class="card-img">
-                <% if teacher.picture.present? %>
-                  <%=  cl_image_tag teacher.picture, width: 250, height:250, :crop=>"fill" %>
-                  <strong><%= link_to "#{teacher.first_name} #{teacher.last_name}", teacher_path(teacher.id)%></strong>
-                    <p><%= teacher.subjects.first.name%></p>
-                  <% end %>
-                  </div>
-                  <div class="skills">
-                  <% teacher.skills.each do |skill| %>
-                  <p><%= skill.subject.name %>: <%= skill.name %></p>
-                  <% end %>
-                  </div>
-                </div>
-                </div>
+        <div class="slide-top">
+          <div class="my-card">
+            <div class="card-img">
+              <% if teacher.picture.present? %>
+                <%=  cl_image_tag teacher.picture, width: 250, height:250, :crop=>"fill" %>
+                <strong><%= link_to "#{teacher.first_name} #{teacher.last_name}", teacher_path(teacher.id)%></strong>
+                  <p><%= teacher.subjects.first.name%></p>
               <% end %>
-              </div>
             </div>
-            <div
-      id="map"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-    ></div>
+            <div class="skills">
+              <% teacher.skills.each do |skill| %>
+                <p><%= skill.subject.name %>: <%= skill.name %></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
+  <div
+    id="map"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
+</div>
 
