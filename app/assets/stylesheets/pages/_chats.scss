@@ -1,7 +1,6 @@
 
 // ------ Chat Show (Messages & Chats) ------ //
 
-
 .chat--window {
   display: flex;
   height: calc(100vh - 113.5px) !important;
@@ -46,6 +45,7 @@ button {
   // border-radius: px;
   background: $light-gray;
   margin: 10px;
+  overflow: hidden;
 }
 
 .chat-menu-pic {
@@ -123,6 +123,7 @@ button {
   justify-content: center;
   display: flex;
   align-items: flex-end;
+  min-width: 40%;
 }
 
 // ------ Chat Profile ------ //
