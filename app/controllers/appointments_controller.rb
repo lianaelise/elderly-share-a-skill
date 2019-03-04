@@ -3,6 +3,13 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(appointment_params)
+    @appointment.guest = Teacher.find(params[:teacher_id])
+    @appointment.organizer = current_user
+    if @appointment.save
+      redirect_to teacher_path(params[:teacher_id])
+    else
+      render :new
+    end
   end
 
   def accept
@@ -27,7 +34,7 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:start_time)
+    params.require(:appointment).permit(:start_time, :teacher_id)
   end
 
   def set_appointment
