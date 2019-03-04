@@ -1,40 +1,41 @@
 <!-- Shows Both "Chats" & "Messages" -->
+<div class="chat--window">
+  <!-- <div class=""> -->
 
-<div class="container">
-  <div class="row no-gutters">
-    <div class="col-sm-6">
-      <h2 class="text-center chat-show-header">All Open Chats</h2>
-    </div>
-    <div class="col-sm-6">
-      <h2 class="text-center message-show-header">Active Message</h2>
-    </div>
+<!-- Chats -->
+  <div class="all-chats"  style="border-right: 1px solid;">
+    <%= render @chats %>
   </div>
-  <div class="row">
 
-    <div class="col-sm-6">
-      <%= render @chats %>
-    </div>
-    <div class="col-sm-6 messages">
+<!-- Messages -->
+  <div class="messages">
+    <div class="active-message">
       <div class="messages--content">
         <%= render @messages %>
         <%= render 'appointments/request', cable: true, appointment: @requests.last if @requests.any? %>
       </div>
     </div>
-    <div class="col-sm-6 offset-sm-6">
-      <div class="message-send chat--form">
-      <%= form_for [@chat, @message] do |f| %>
-
-        <%= f.text_field :body, placeholder: "Type message", autofocus: true, class: "message-form--input" %>
-        <%= f.hidden_field :chat_id, value: @chat.id %>
-        <%= f.button'<i class="fas fa-share-square"></i>'.html_safe, class: "message-form--submit" %>
-
-       <!--  <= f.submit "", class: "message-form--submit fas fa-share-square" %> -->
-      <% end %>
-
-      </div>
+    <div class="message-send chat--form">
+    <%= form_for [@chat, @message] do |f| %>
+      <%= f.text_field :body, placeholder: "Type message", autofocus: true, class: "message-form--input" %>
+      <%= f.hidden_field :chat_id, value: @chat.id %>
+      <%= f.button'<i class="fas fa-share-square"></i>'.html_safe, class: "message-form--submit" %>
+    <% end %>
     </div>
   </div>
+
+<!-- Profile -->
+  <div class="chat-profile">
+    <div class="chat-profile-picture text-center">
+      <%= cl_image_tag @other_user.picture , width: 150, height: 150, :crop=>"fill" %>
+    </div>
+    <br>
+    <div class="chat-profile-name text-center">
+      <h3> <%= @other_user.first_name %> <%= @other_user.last_name %> </h3>
+
+      <p> Favorite Subject: <%= @other_user.subjects.first.name %> </p>
+    </div>
+  </div>
+
 </div>
-
-
 
