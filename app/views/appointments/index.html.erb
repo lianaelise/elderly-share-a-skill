@@ -8,12 +8,9 @@
     </div>
   <% end %>
 
-
   <% @pending_appt.each do |appt| %>
     <%= render "calendar/request", appt: appt %>
   <% end %>
-
-
 
   <%= month_calendar events: @accepted_appt do |date, appointments| %>
     <%= date.day %>

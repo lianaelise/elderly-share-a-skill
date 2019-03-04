@@ -4,6 +4,8 @@
     <p><%= link_to "#{appointment.organizer.first_name} #{appointment.organizer.last_name} #{appointment.status}", user_url(appointment.organizer) %></p>
   </div>
 <% else %>
-  <div class="teacher-hours" data-toggle="tooltip" data-placement="top" title = <%= "#{appointment.start_time.to_s(:time)}"%> >
-  <p><%= link_to "#{appointment.guest.first_name} #{appointment.guest.last_name} #{appointment.status}", user_url(appointment.guest) %></p>
+  <div>
+    <div class="teacher-hours" data-toggle="tooltip" data-placement="top" title = <%= "#{appointment.start_time.to_s(:time)}"%> >
+    <p><%= link_to "#{appointment.guest.first_name} #{appointment.guest.last_name} #{appointment.status}", user_url(appointment.guest) %></p>
+  </div>
 <% end %>
