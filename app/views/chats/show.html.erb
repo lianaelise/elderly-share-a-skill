@@ -17,7 +17,7 @@
     <div class="col-sm-6 messages">
       <div class="messages--content">
         <%= render @messages %>
-        <%= render 'appointments/request', appointment: @requests.last if @requests.any? %>
+        <%= render 'appointments/request', cable: true, appointment: @requests.last if @requests.any? %>
       </div>
     </div>
     <div class="col-sm-6 offset-sm-6">

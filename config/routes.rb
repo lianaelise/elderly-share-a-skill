@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :chats, only: [:index, :create, :show] do
     resources :appointments, only: [:create]
-   resources :messages, only: [:create]
+    resources :messages, only: [:create]
   end
 
   resources :after_signup
@@ -38,9 +38,9 @@ Rails.application.routes.draw do
       post :accept
       post :reject
     end
-    collection do
-      get 'my-appointments'
-    end
+    # collection do
+    #   get 'my-appointments'
+    # end
   end
 
   resources :notifications, only: [:index] do

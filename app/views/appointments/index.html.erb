@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>My Appointments</h1>
+  <h3 class="name-calendar"><%= current_user.type %> <%= current_user.first_name %></h3>
+
+  <% if @appointments.count <= 0  %>
+    <div class="alert alert-info" role="alert">
+      <strong>Heads up!</strong>You do not have any meetings yet!
+    </div>
+  <% end %>
+
+
+  <% @pending_appt.each do |appt| %>
+    <%= render "calendar/request", appt: appt %>
+  <% end %>
+
+
+
+  <%= month_calendar events: @not_pending_appt do |date, appointments| %>
+    <%= date.day %>
+    <% appointments.each do |appointment| %>
+      <%= render "calendar/appointment", appointment: appointment %>
+    <% end %>
+  <% end %>
+</div>
+
+
+
