@@ -3,7 +3,7 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = Appointment.where(organizer_id: current_user.id).or(Appointment.where(guest_id: current_user.id))
-    @not_pending_appt = @appointments.where.not(status: :pending)
+    @accepted_appt = @appointments.where(status: :accepted)
     @pending_appt = @appointments.where(status: :pending)
   end
 
@@ -25,15 +25,15 @@ class AppointmentsController < ApplicationController
     end
     respond_to do |format|
       format.html { head :no_content }
-      format.js  # <-- will render `app/views/reviews/accept.js.erb`
+      format.js  # <-- will render `app/views/appointments/accept.js.erb`
     end
   end
 
   def reject
     @appointment.update(status: :rejected)
     respond_to do |format|
-      format.html { head :no_content  }
-      format.js  # <-- will render `app/views/reviews/reject.js.erb`
+      format.html { head :no_content }
+      format.js  # <-- will render `app/views/appointments/reject.js.erb`
     end
   end
 
