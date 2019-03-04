@@ -1,0 +1,11 @@
+<% if appt.guest == current_user %>
+  <div id="appointment-<%= appt.id %>">
+  <strong>Pending appointment with <%= link_to "#{appt.organizer.first_name} #{appt.organizer.last_name}", user_url(appt.guest) %></strong>
+    <%= render 'appointments/request', appointment: appt, remote: true, cable: false %>
+   </div>
+<% elsif appt.organizer == current_user %>
+  <p>You have sent a appointment request to
+  <strong><%= link_to "#{appt.guest.first_name} #{appt.guest.last_name}", user_url(appt.guest)%></strong>.
+   Date: <%= appt.start_time.to_formatted_s(:short) %></p>
+<% end %>
+<br>

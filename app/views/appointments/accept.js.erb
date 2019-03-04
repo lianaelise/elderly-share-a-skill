@@ -1,0 +1,24 @@
+var calendarTitle = document.querySelector('.calendar-title')
+
+if (calendarTitle) {
+  const apptMonth = '<%= Date::MONTHNAMES[@appointment.start_time.month] %>'
+  const appDay = '<%= @appointment.start_time.day %>'
+  const calendarMonth = calendarTitle.innerText.split(' ')[0];
+  const appointmentHTML = '<%= j render "calendar/appointment", appointment: @appointment %>'
+
+  function renderAppointment(element, html) {
+    element.insertAdjacentHTML('beforeend', html);
+  }
+
+  if (apptMonth === calendarMonth) {
+    const days = document.querySelectorAll('.day.current-month');
+    let td;
+    days.forEach((day) => {
+      if (day.innerText[0] == appDay) td = day
+    });
+    renderAppointment(td, appointmentHTML);
+  }
+
+  const request = document.getElementById('appointment-<%= @appointment.id %>');
+  request.remove();
+}

@@ -12,7 +12,7 @@
     <div class="active-message">
       <div class="messages--content">
         <%= render @messages %>
-        <%= render 'appointments/request', appointment: @requests.last if @requests.any? %>
+        <%= render 'appointments/request', cable: true, appointment: @requests.last if @requests.any? %>
       </div>
     </div>
     <div class="message-send chat--form">

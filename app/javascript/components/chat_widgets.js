@@ -20,8 +20,8 @@ function bindSuggestionEvents(form) {
 
 function bindRequestEvents(request) {
   const appointmentId = request.dataset.appointmentid;
-  const rejectBtn = request.querySelector('.btn-reject');
-  const acceptBtn = request.querySelector('.btn-accept');
+  const rejectBtn = request.querySelector('.btn-reject.cable');
+  const acceptBtn = request.querySelector('.btn-accept.cable');
 
   rejectBtn.addEventListener('click', event => {
     event.preventDefault();
