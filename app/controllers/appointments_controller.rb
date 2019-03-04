@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController
-  before_action :set_appointment, only: [:accept, :reject]
+  before_action :set_appointment, only: [:accept, :reject, :cancel]
 
   def index
     @appointments = Appointment.where(organizer_id: current_user.id).or(Appointment.where(guest_id: current_user.id))
@@ -34,6 +34,14 @@ class AppointmentsController < ApplicationController
     respond_to do |format|
       format.html { head :no_content }
       format.js  # <-- will render `app/views/appointments/reject.js.erb`
+    end
+  end
+
+  def cancel
+    @appointment.update(status: :cancelled)
+    respond_to do |format|
+      format.html { head :no_content }
+      format.js  # <-- will render `app/views/appointments/cancel.js.erb`
     end
   end
 
