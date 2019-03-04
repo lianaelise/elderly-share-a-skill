@@ -9,6 +9,7 @@
     <!-- Links when logged in -->
     <%= link_to "Appointments", my_appointments_appointments_path , class: "navbar-wagon-item navbar-wagon-link hidden-xs hidden-sm" %>
     <%= link_to "Messages", chats_path , class: "navbar-wagon-item navbar-wagon-link hidden-xs hidden-sm" %>
+
     <!-- Avatar with dropdown menu -->
     <div class="navbar-wagon-item" data-behavior="notifications-counter">
       <% if current_user.notifications.unread.any?%>

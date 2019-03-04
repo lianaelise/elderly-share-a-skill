@@ -23,7 +23,7 @@ class ChatNotificationsChannel < ApplicationCable::Channel
   def render_request(appointment)
     ApplicationController.render(
           partial: 'appointments/request',
-          locals: {appointment: appointment}
+          locals: {appointment: appointment, cable: true}
       )
   end
 end
