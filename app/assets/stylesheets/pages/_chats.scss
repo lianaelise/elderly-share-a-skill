@@ -112,6 +112,15 @@ button {
   max-width: 75%;
   align-items: center;
   margin: auto;
+  border: solid 2px $blue;
+  padding: 15px;
+}
+
+.appointment-button{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
 }
 
 .message-pic {
