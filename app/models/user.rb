@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :notifications, foreign_key: :recipient_id
 
+  has_many :received_appointments, foreign_key: :guest_id, class_name: 'Appointment'
+  has_many :sent_appointments, foreign_key: :organizer_id, class_name: 'Appointment'
+
   def sender?(conversation)
     self == conversation.sender
   end
