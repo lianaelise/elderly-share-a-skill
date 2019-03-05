@@ -6,7 +6,7 @@
 @import "my_appointments";
 
 .banner-teachers{
-  background-image:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://images.unsplash.com/photo-1528984063924-226bc3e4be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80');
+  background-image:linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('https://images.unsplash.com/photo-1528984063924-226bc3e4be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80');
   height: 50vh;
   width: 100%;
   background-position: center;
@@ -20,7 +20,7 @@
 }
 
 .banner-details{
-  padding-top: 25px;
+  padding-top: 10px;
 }
 
 .slide-top{
@@ -129,6 +129,9 @@
 .search-bar{
   margin: auto 60px;
 }
-.categories {
+.categories form {
   color: white;
+  margin-bottom: 30px;
+  margin-top: -25px;
 }
+

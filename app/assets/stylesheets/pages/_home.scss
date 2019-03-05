@@ -9,6 +9,10 @@ a{
   text-decoration: none !important;
 }
 
+.search-form p {
+  color: $blue;
+}
+
 .banner{
  background-image: url('https://res.cloudinary.com/mrcocktailbaron/image/upload/v1551260071/home.png');
  height: calc(100vh - 60px);
