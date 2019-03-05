@@ -11,7 +11,7 @@
 .all-chats {
   max-width: 25%;
   min-width: 25%;
-  flex-grow: 1;
+  overflow: scroll;
 }
 
 button {
@@ -74,7 +74,8 @@ button {
   margin-top: 35px;
   height: 80vh;
   padding: 0 15px;
-  overflow: scroll;
+  position: relative;
+  width: 100%;
   // overflow: hidden;
   // z-index: -1;
 }
@@ -86,17 +87,15 @@ button {
 
 .message-box {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  border-radius: 5px 5px 5px 0px;
-  background: $blue;
   opacity: .9;
-  margin: 10px;
   color: $light-gray;
   // position: relative;
   min-width: 75%;
   max-width: 75%;
   margin-bottom: 20px;
+  height: 75px;
+  background-color: $blue;
 }
 
 .message-box.other {
@@ -105,7 +104,14 @@ button {
   color: $blue;
   float: right;
   border-radius: 5px 5px 0px 5px;
-  float: right;
+}
+
+.chat_appointment{
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 75%;
+  align-items: center;
+  margin: auto;
 }
 
 .message-pic {
@@ -150,6 +156,8 @@ button {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  max-height: 65vh;
+  overflow: scroll;
 }
 
 .chat-title p{
@@ -158,5 +166,10 @@ button {
   background-color: $red;
   padding: 15px 10px;
 }
-
+.message-form--input {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, -50%);
+}
 

@@ -18,12 +18,12 @@
         <%= render 'appointments/request', cable: true, appointment: @requests.last if @requests.any? %>
       </div>
     </div>
-    <div class="message-send chat--form">
-    <%= form_for [@chat, @message] do |f| %>
-      <%= f.text_field :body, placeholder: "Type message", autofocus: true, class: "message-form--input" %>
-      <%= f.hidden_field :chat_id, value: @chat.id %>
-      <%= f.button'<i class="fas fa-share-square"></i>'.html_safe, class: "message-form--submit" %>
-    <% end %>
+    <div class="message-send chat--form ">
+        <%= form_for [@chat, @message] do |f| %>
+          <%= f.text_field :body, placeholder: "Type message", autofocus: true, class: "message-form--input" %>
+          <%= f.hidden_field :chat_id, value: @chat.id %>
+          <%= f.button''.html_safe, class: "message-form--submit" %>
+        <% end %>
     </div>
   </div>
 
