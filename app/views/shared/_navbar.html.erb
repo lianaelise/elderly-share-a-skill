@@ -8,8 +8,10 @@
     <% if user_signed_in? %>
     <!-- Links when logged in -->
     <%= link_to "Appointments", appointments_path , class: "navbar-wagon-item navbar-wagon-link" %>
-    <% if Chat.where(sender_id: current_user.id).last %>
+    <% if Chat.where(sender: current_user).last %>
       <%= link_to "Messages", chat_path(Chat.where(sender_id: current_user.id).last) , class: "navbar-wagon-item navbar-wagon-link" %>
+    <% elsif Chat.where(recipient: current_user).last %>
+      <%= link_to "Messages", chat_path(Chat.where(recipient_id: current_user.id).last) , class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
 
     <!-- Avatar with dropdown menu -->

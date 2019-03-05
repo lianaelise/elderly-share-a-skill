@@ -19,34 +19,17 @@ function bindSuggestionEvents(form) {
 };
 
 function bindRequestEvents(request) {
-  const appointmentId = request.dataset.appointmentid;
   const rejectBtn = request.querySelector('.btn-reject.cable');
   const acceptBtn = request.querySelector('.btn-accept.cable');
 
+  response => request.remove()
+
   rejectBtn.addEventListener('click', event => {
-    event.preventDefault();
-    fetch(`/appointments/${appointmentId}/reject`, {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': Rails.csrfToken()
-      },
-      credentials: 'same-origin'
-    })
-      .then(response => request.remove());
+    request.remove();
   });
 
   acceptBtn.addEventListener('click', event => {
-    event.preventDefault();
-    fetch(`/appointments/${appointmentId}/accept`, {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': Rails.csrfToken()
-      },
-      credentials: 'same-origin'
-    })
-      .then(response => request.remove());
+    request.remove();
   });
 };
 
