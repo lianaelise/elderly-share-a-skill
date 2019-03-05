@@ -24,7 +24,7 @@
             </li>
             <li>
               <div class="show-icons" data-toggle="tooltip" data-placement="top" title="Number of Appointments Booked">
-                <i class="far fa-smile"></i>
+                <i class="far fa-calendar-alt"></i>
                 <%= Appointment.where(organizer_id: @student.id).or(Appointment.where(guest_id: @student.id)).count %>
               </div>
             </li>
