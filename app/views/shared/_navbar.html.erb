@@ -7,8 +7,11 @@
   <div class="navbar-wagon-right">
     <% if user_signed_in? %>
     <!-- Links when logged in -->
-    <%= link_to "Appointments", appointments_path , class: "navbar-wagon-item navbar-wagon-link hidden-xs hidden-sm" %>
-    <%= link_to "Messages", chats_path , class: "navbar-wagon-item navbar-wagon-link hidden-xs hidden-sm" %>
+    <%= link_to "Appointments", appointments_path , class: "navbar-wagon-item navbar-wagon-link" %>
+    <% if Chat.where(sender_id: current_user.id).last %>
+      <%= link_to "Messages", chat_path(Chat.where(sender_id: current_user.id).last) , class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
+
     <!-- Avatar with dropdown menu -->
     <div class="navbar-wagon-item" data-behavior="notifications-counter">
       <% if current_user.notifications.unread.any?%>
@@ -22,7 +25,11 @@
         <% end %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li><%= link_to "Appointments", appointments_path , class: "navbar-wagon-item navbar-wagon-link hidden-md hidden-lg" %></li>
-          <li><%= link_to "Messages", chats_path , class: "navbar-wagon-item navbar-wagon-link hidden-md hidden-lg" %></li>
+          <li>
+            <% if Chat.where(sender_id: current_user.id).last %>
+            <%= link_to "Messages", chat_path(Chat.where(sender_id: current_user.id).last) , class: "navbar-wagon-item navbar-wagon-link" %>
+            <% end %>
+          </li>
           <li>
             <% if current_user.type == "Student"  %>
             <%= link_to "Profile", student_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
