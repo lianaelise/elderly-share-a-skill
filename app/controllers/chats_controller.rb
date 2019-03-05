@@ -8,9 +8,9 @@ class ChatsController < ApplicationController
   def show
     @chats = Chat.involving(current_user)
     @chat = Chat.find(params[:id])
-    @other_user = current_user = @chat.sender ? @chat.recipient : @chat.sender
+    @other_user = current_user == @chat.sender ? @chat.recipient : @chat.sender
     @messages = @chat.messages.order(created_at: :asc).last(20)
-    @requests = Appointment.requested_to(current_user)
+    @requests = current_user.received_appointments.pending
     @message = Message.new
   end
 

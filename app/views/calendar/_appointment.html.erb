@@ -1,11 +1,11 @@
 <% if current_user.id != appointment.organizer_id %>
   <div>
     <div id="cancel" class="student-hours" data-toggle="tooltip" data-placement="top" title = <%= "#{appointment.start_time.to_s(:time)}"%> >
-    <p id="cancel-<%= appointment.id %>"><%= link_to "#{appointment.organizer.first_name} #{appointment.organizer.last_name} #{appointment.status}", user_url(appointment.organizer) %> <strong><%= link_to '-$-', cancel_appointment_path(appointment), method: :post, remote: true %> </strong></p>
+    <p id="cancel-<%= appointment.id %>"><%= link_to "#{appointment.organizer.first_name} #{appointment.organizer.last_name} #{appointment.status}", user_url(appointment.organizer) %> <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, cancel_appointment_path(appointment), method: :post, remote: true %></p>
   </div>
 <% else %>
   <div>
     <div id="cancel" class="teacher-hours" data-toggle="tooltip" data-placement="top" title = <%= "#{appointment.start_time.to_s(:time)}"%> >
-    <p id="cancel-<%= appointment.id %>"><%= link_to "#{appointment.guest.first_name} #{appointment.guest.last_name} #{appointment.status}", user_url(appointment.guest) %> <%= link_to '-$-', cancel_appointment_path(appointment), method: :post, remote: true %></strong></p>
+    <p id="cancel-<%= appointment.id %>"><%= link_to "#{appointment.guest.first_name} #{appointment.guest.last_name} #{appointment.status}", user_url(appointment.guest) %> <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, cancel_appointment_path(appointment), method: :post, remote: true %></p>
   </div>
 <% end %>
