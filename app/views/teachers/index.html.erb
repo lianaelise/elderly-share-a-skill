@@ -24,15 +24,15 @@
     <div class="row card-group">
       <% @teachers.each do |teacher| %>
         <div class="slide-top">
-          <div class="my-card">
-            <div class="card-img">
+          <div class="my-card flip">
+            <div class="card-img ">
               <% if teacher.picture.present? %>
                 <%=  cl_image_tag teacher.picture, width: 250, height:250, :crop=>"fill" %>
                 <strong><%= link_to "#{teacher.first_name} #{teacher.last_name}", teacher_path(teacher.id)%></strong>
                   <p><%= teacher.subjects.first.name%></p>
               <% end %>
             </div>
-            <div class="skills">
+            <div class="my-skills">
               <% teacher.skills.each do |skill| %>
                 <p><%= skill.subject.name %>: <%= skill.name %></p>
               <% end %>
