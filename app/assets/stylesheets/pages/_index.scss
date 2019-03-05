@@ -53,24 +53,26 @@
   margin-bottom: 30px;
   margin-right: 20px;
   overflow: hidden;
-    &:hover {
+}
+
+.flip:hover {
     // transform: translateY(-20px);
     background-position: -300px center;
 
-    .skills {
+    .my-skills {
       transform: translateX(0%);
       color: #027090;
 
       transition: all 0.3s;
     }
   }
-}
+
 
 .my-card img {
   padding-bottom: 15px;
 }
 
-.skills {
+.my-skills {
   position: absolute;
   z-index: 10;
   top: 0;
@@ -89,7 +91,7 @@
   transition: all 0.3s;
 }
 
-.skills p{
+.my-skills p{
   color: white;
 }
 
