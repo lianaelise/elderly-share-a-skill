@@ -91,8 +91,14 @@
         <div class="card">
           <div class="home-card-img">
             <% if teacher.picture.present? %>
-              <%= link_to teachers_path do %>
-                <%=  cl_image_tag teacher.picture, width: 200, height: 200, :crop=>"fill" %>
+              <% if current_user %>
+                <%= link_to teacher_path(teacher) do %>
+                  <%=  cl_image_tag teacher.picture, width: 200, height: 200, :crop=>"fill" %>
+                <% end %>
+              <% else %>
+                <%= link_to teachers_path do %>
+                  <%=  cl_image_tag teacher.picture, width: 200, height: 200, :crop=>"fill" %>
+                <% end %>
               <% end %>
             <% end %>
           </div>
