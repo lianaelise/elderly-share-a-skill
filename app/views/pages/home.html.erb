@@ -20,14 +20,15 @@
 <!-- About Us Cards -->
 
 <div class="wrapper about-background">
-  <div class="container about-background">
+  <div class="container">
+    <h1 class="text-center title"> About Us </h1>
     <div class="section row">
-      <h1 class="text-center title"> About Us </h1>
       <div class="hr col-xs-8 col-xs-offset-2">
         <p class= "lead text-center">
-          A site that pairs retirees who have valuable skills to share, with young students who'd like to build a meaningful relationship with their teacher.
+          Our site pairs retirees who have valuable skills to share, with young students who'd like to build a meaningful relationship with their teacher.
         </p>
-        <hr>
+        <hr class="divider-large">
+      </div>
     </div>
     <div class="row">
       <div class="article col-xs-4">
@@ -40,7 +41,6 @@
             <p class="lead">
               Our teacher community has a variety of skills to offer; their life experience allows for a unique approach to the lessons they teach.
             </p>
-            <%= link_to "Browse Teachers", teachers_path, class:"btn btn-lg center-block" %>
           </div>
         </div>
       </div>
@@ -52,9 +52,8 @@
           <div class="info">
             <hr class="divider">
             <p class="lead">
-              Additionally, the service is currently free, allowing students to further their knowledge base without having to worry about cost.
+              Our unique concept facilitates meaningful and mutually beneficial relationships; we believe this service should always be free.
             </p>
-            <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-lg center-block" %>
           </div>
         </div>
       </div>
@@ -66,12 +65,40 @@
           <div class="info">
             <hr class="divider">
             <p class="lead">
-              Something about our students
+              Our students are typically motivated individuals looking for ways to grow their knowledge base while providing companionship to the elderly community.
             </p>
-            <%= link_to "Sign In", new_user_session_path, class:"btn btn-lg center-block" %>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Top Teachers -->
+
+
+<div class="wrapper teacher-background">
+  <div class="container">
+    <h1 class="text-center title-red"> Take a Scroll </h1>
+    <div class="hr col-xs-8 col-xs-offset-2">
+      <p class= "lead text-center">
+        Checkout out our extensive list of smiling teachers, eager to assist you in achieving your personal goals!
+      </p>
+      <hr class="divider-red">
+    </div>
+    <div class="scrolling-wrapper-flexbox">
+      <% @teachers.each do |teacher| %>
+        <div class="card">
+          <div class="home-card-img">
+            <% if teacher.picture.present? %>
+              <%= link_to teachers_path do %>
+                <%=  cl_image_tag teacher.picture, width: 200, height: 200, :crop=>"fill" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
