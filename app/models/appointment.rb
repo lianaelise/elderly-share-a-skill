@@ -14,7 +14,7 @@ class Appointment < ApplicationRecord
 
   def appointment_time
     minutes = start_time.min > 0 ? ":%M" : ""
-    start_time.in_time_zone("Jerusalem").strftime("%A, %d %B %Y at %-l#{minutes} %P")
+    start_time.strftime("%A, %d %B %Y at %-l#{minutes} %P")
   end
 
 
