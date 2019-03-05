@@ -62,7 +62,7 @@ Make an Appointment!
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Appointment Schedular</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
@@ -73,8 +73,8 @@ Make an Appointment!
             <%= f.error_notification %>
             <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
             <div class="form-inputs">
-              <%= f.input :start_time, as: :string, required: false, label: "Dates", placeholder: "From", input_html: { class: "datepicker" }%>
-              <%= f.input :end_time, as: :string, required: false, label: '&nbsp;'.html_safe, placeholder: "To", input_html: { class: "datepicker" }%>
+              <%= f.input :start_time, as: :string, required: false, label: "Dates", placeholder: "Pick a date!", input_html: { class: "datepicker" }%>
+              <%#= f.input :end_time, as: :string, required: false, label: '&nbsp;'.html_safe, placeholder: "To", input_html: { class: "datepicker" }%>
             </div>
             <div class="form-actions">
               <%= f.button :submit, class: "elder-button-blue" %>
