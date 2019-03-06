@@ -7,7 +7,7 @@
     <div class="chat-title">
     <p>Active messages</p>
     </div>
-    <%= render @chats %>
+    <%= render partial: 'chats/chat', collection: @chats, locals: { user: current_user } %>
   </div>
 
 <!-- Messages -->

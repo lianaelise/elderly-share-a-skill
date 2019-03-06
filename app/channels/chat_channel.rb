@@ -7,9 +7,17 @@ class ChatChannel < ApplicationCable::Channel
 
   # Called when message-form contents are received by the server
   def send_message(payload)
+    chat = Chat.find(payload["id"])
+
     message = Message.new(user: current_user, chat_id: payload["id"], body: payload["message"])
 
-    ActionCable.server.broadcast "chat_#{payload['id']}", message: render_message(message) if message.save
+    return unless message.save
+
+    ActionCable.server.broadcast "chat_#{payload['id']}", message: render_message(message)
+    # byebug
+    if chat.messages.count == 1
+      ActionCable.server.broadcast "chat_#{payload['id']}", chat: render_chat(chat)
+    end
 
     suggested_time = TimeCop.new(message.body).perform
 
@@ -35,6 +43,13 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   private
+
+  def render_chat(chat)
+     ApplicationController.render(
+          partial: 'chats/chat',
+          locals: {chat: chat, user: current_user}
+      )
+  end
 
   def render_message(message)
     ApplicationController.render(
