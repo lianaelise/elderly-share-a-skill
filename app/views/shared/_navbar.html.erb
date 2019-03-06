@@ -29,7 +29,7 @@
           <li><%= link_to "Appointments", appointments_path , class: "navbar-wagon-item navbar-wagon-link hidden-md hidden-lg" %></li>
           <li>
             <% if Chat.where(sender_id: current_user.id).last %>
-            <%= link_to "Messages", chat_path(Chat.where(sender_id: current_user.id).last) , class: "navbar-wagon-item navbar-wagon-link" %>
+            <%= link_to "Messages", chat_path(Chat.where(sender_id: current_user.id).last) , class: "navbar-wagon-item navbar-wagon-link hidden-md hidden-lg" %>
             <% end %>
           </li>
           <li>
