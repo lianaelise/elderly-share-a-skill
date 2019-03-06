@@ -1,7 +1,7 @@
 <% if current_user.id != appointment.organizer_id %>
   <div>
     <div id="cancel" class="student-hours" data-toggle="tooltip" data-placement="top" title = <%= "#{appointment.status}-#{appointment.start_time.in_time_zone("Jerusalem").to_s(:time)}"%> >
-    <p id="cancel-<%= appointment.id %>"><%= link_to "#{appointment.organizer.first_name} #{appointment.organizer.last_name} #{appointment.status}", user_url(appointment.organizer) %></p>
+    <p id="cancel-<%= appointment.id %>"><%= link_to "#{appointment.organizer.first_name} #{appointment.organizer.last_name}", user_url(appointment.organizer) %></p>
   </div>
 <% else %>
   <div>
