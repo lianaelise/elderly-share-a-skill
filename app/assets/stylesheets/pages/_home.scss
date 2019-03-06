@@ -9,10 +9,6 @@ a{
   text-decoration: none !important;
 }
 
-.search-form p {
-  color: $blue;
-}
-
 .banner{
  background-image: url('https://res.cloudinary.com/mrcocktailbaron/image/upload/v1551260071/home.png');
  height: calc(100vh - 60px);
@@ -65,6 +61,18 @@ a{
 
 }
 
+#home-search {
+ -webkit-text-fill-color: $blue;
+ font-size: 20px;
+}
+
+.search-form p {
+  color: $blue;
+  font-weight: lighter;
+  font-size: 20px;
+}
+
+
 
 // ------ About Us Cards ------ //
 
@@ -104,7 +112,7 @@ $cta: $red;
   background: $light-gray;
   border-radius: 3px;
   cursor: pointer;
-  height: 17em;
+  height: 18em;
   padding: 1.5em;
   transition: height 0.4s, box-shadow 0.5s;
 
