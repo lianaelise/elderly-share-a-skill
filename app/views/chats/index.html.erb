@@ -4,7 +4,7 @@
   <div class="chat-show-header">
     <h1 class="text-center">Your Chat Dashboard</h1>
     <div class="panel-body">
-      <%= render @chats %>
+      <%= render partial: 'chats/chat', collection: @chats, locals: { user: current_user } %>
     </div>
   </div>
 </div>

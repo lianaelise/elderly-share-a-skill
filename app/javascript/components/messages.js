@@ -6,6 +6,7 @@ function scrollToBottom(element) {
 }
 
 const messages = document.querySelector('.messages');
+const chats = document.querySelector('.all-chats');
 
 if (messages) {
   const content = messages.querySelector(".messages--content");
@@ -14,9 +15,15 @@ if (messages) {
 
   // Telling `chat.js` to call this piece of code whenever a new message is received
   // over ActionCable
-  setCallback(message => {
-    content.insertAdjacentHTML("beforeend", message);
+  setCallback((message, chat) => {
+    if (message) {
+      content.insertAdjacentHTML("beforeend", message);
 
-    scrollToBottom(content);
+      scrollToBottom(content);
+    }
+
+    if (chat) {
+      chats.insertAdjacentHTML("beforeend", chat);
+    }
   });
 }

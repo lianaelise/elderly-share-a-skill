@@ -1,5 +1,5 @@
 
-<% other_user = current_user.sender?(chat) ? chat.recipient : chat.sender %>
+<% other_user = user.sender?(chat) ? chat.recipient : chat.sender %>
 
     <% if chat.messages.any? %>
           <div class="chat-wrapper">
