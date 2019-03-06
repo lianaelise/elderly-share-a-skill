@@ -16,74 +16,76 @@
 
 <!-- status bar -->
 
-<% if current_user.type == "Teacher" %>
-  <div class="wizard-progress">
-    <div class="step complete">
-      First Name
-      <div> <%= link_to '', after_signup_path(:id => 'confirm_first_name'), class: "node" %> </div>
+<div class="container">
+  <% if current_user.type == "Teacher" %>
+    <div class="wizard-progress">
+      <div class="step complete">
+        First Name
+        <div> <%= link_to '', after_signup_path(:id => 'confirm_first_name'), class: "node" %> </div>
+      </div>
+      <div class="step complete">
+        Last Name
+        <div> <%= link_to '', after_signup_path(:id => 'confirm_last_name'), class: "node" %> </div>
+      </div>
+      <div class="step in-progress">
+        Phone
+        <div> <%= link_to '', after_signup_path(:id => 'confirm_phone_number'), class: "node" %> </div>
+      </div>
+      <div class="step">
+        Address
+        <div class="node"></div>
+      </div>
+      <div class="step">
+        Bio
+        <div class="node"></div>
+      </div>
+      <div class="step">
+        Picture
+        <div class="node"></div>
+      </div>
+      <div class="step">
+        Subject
+        <div class="node"></div>
+      </div>
+      <div class="step">
+        Details
+        <div class="node"></div>
+      </div>
+      <div class="step">
+        Home
+        <div> <%= link_to '', root_path, class: "node" %> </div>
+      </div>
     </div>
-    <div class="step complete">
-      Last Name
-      <div> <%= link_to '', after_signup_path(:id => 'confirm_last_name'), class: "node" %> </div>
+  <% else %>
+    <div class="wizard-progress">
+      <div class="step complete">
+        First Name
+        <div> <%= link_to '', after_signup_path(:id => 'confirm_first_name'), class: "node" %> </div>
+      </div>
+      <div class="step complete">
+        Last Name
+        <div> <%= link_to '', after_signup_path(:id => 'confirm_last_name'), class: "node" %> </div>
+      </div>
+      <div class="step in-progress">
+        Phone
+        <div> <%= link_to '', after_signup_path(:id => 'confirm_phone_number'), class: "node" %> </div>
+      </div>
+      <div class="step">
+        Address
+        <div class="node"></div>
+      </div>
+      <div class="step">
+        Bio
+        <div class="node"></div>
+      </div>
+      <div class="step">
+        Picture
+        <div class="node"></div>
+      </div>
+      <div class="step">
+        Home
+        <div> <%= link_to '', root_path, class: "node" %> </div>
+      </div>
     </div>
-    <div class="step in-progress">
-      Phone
-      <div> <%= link_to '', after_signup_path(:id => 'confirm_phone_number'), class: "node" %> </div>
-    </div>
-    <div class="step">
-      Address
-      <div class="node"></div>
-    </div>
-    <div class="step">
-      Bio
-      <div class="node"></div>
-    </div>
-    <div class="step">
-      Picture
-      <div class="node"></div>
-    </div>
-    <div class="step">
-      Subject
-      <div class="node"></div>
-    </div>
-    <div class="step">
-      Details
-      <div class="node"></div>
-    </div>
-    <div class="step">
-      Home
-      <div> <%= link_to '', root_path, class: "node" %> </div>
-    </div>
-  </div>
-<% else %>
-  <div class="wizard-progress">
-    <div class="step complete">
-      First Name
-      <div> <%= link_to '', after_signup_path(:id => 'confirm_first_name'), class: "node" %> </div>
-    </div>
-    <div class="step complete">
-      Last Name
-      <div> <%= link_to '', after_signup_path(:id => 'confirm_last_name'), class: "node" %> </div>
-    </div>
-    <div class="step in-progress">
-      Phone
-      <div> <%= link_to '', after_signup_path(:id => 'confirm_phone_number'), class: "node" %> </div>
-    </div>
-    <div class="step">
-      Address
-      <div class="node"></div>
-    </div>
-    <div class="step">
-      Bio
-      <div class="node"></div>
-    </div>
-    <div class="step">
-      Picture
-      <div class="node"></div>
-    </div>
-    <div class="step">
-      Home
-      <div> <%= link_to '', root_path, class: "node" %> </div>
-    </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

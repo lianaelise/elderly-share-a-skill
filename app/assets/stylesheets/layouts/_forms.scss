@@ -22,14 +22,6 @@ input:-webkit-autofill {
   -webkit-text-fill-color: $blue;
 }
 
-// input:focus, select:focus {
-//   -webkit-box-shadow: inset 0 0 0px 9999px $light-gray;
-// }
-
-// input:focus, select:active {
-//   -webkit-box-shadow: inset 0 0 0px 9999px $light-gray;
-// }
-
 #teacher_picture {
   font-size: 18px;
   text-align: center;
@@ -152,25 +144,6 @@ input[type="checkbox"]:before, input[type="checkbox"]:checked:before {
  text-align:center;
 }
 
-// NOT USED
-
-// #appointment_start_time, #appointment_end_time {
-  // -webkit-appearance: none;
-//   background-color: $light-gray;
-//   border-bottom-color: $blue;
-//   border-width: 0px 0px 2px 0px;
-//   border-radius: 0px;
-//   padding: 0px 40px;
-//   font-size: 30px;
-//   margin: 30px 0px;
-//   font-weight: lighter;
-// }
-
-// #appointment_start_time, #appointment_end_time {
-//   -webkit-box-shadow: inset 0 0 0px 9999px $light-gray;
-//   -webkit-text-fill-color: $blue;
-// }
-
 .placeholder {
   font-size: 18px;
 }
@@ -198,5 +171,7 @@ input[type="checkbox"]:before, input[type="checkbox"]:checked:before {
   border-bottom-color: $blue;
 }
 
-
+.skill-status {
+margin-bottom: 2em;
+}
 

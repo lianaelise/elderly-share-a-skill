@@ -1,18 +1,22 @@
 <div class="banner">
   <div class="titles">
     <h1>Elder Share-a-Skill</h1>
-    <h2>Some Clever Slogan Here</h2>
+    <h2>An Old School Education with a Modern Twist</h2>
   </div>
   <div class="search-form">
-    <%= form_tag teachers_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control text-center",
-      placeholder: "Search for a skill",
-      autocomplete:"off"
-    %>
-    <% end %>
-    <p>Search in your neighborhood! <button id="geolocate" class="fas fa-map-pin"></button></p>
+    <div class="search-subject">
+      <%= form_tag teachers_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "text-center", id: "home-search",
+        placeholder: "Search by skill",
+        autocomplete:"off"
+      %>
+      <% end %>
+    </div>
+    <div class="location-search">
+      <p>Search by neighborhood! <button id="geolocate" class="fas fa-map-pin"></button> </p>
+    </div>
   </div>
 </div>
 
@@ -65,7 +69,7 @@
           <div class="info">
             <hr class="divider">
             <p class="lead">
-              Our students are typically motivated individuals looking for ways to grow their knowledge base while providing companionship to the elderly community.
+              Our students are motivated individuals looking for ways to grow their knowledge base while providing companionship to the elderly community.
             </p>
           </div>
         </div>

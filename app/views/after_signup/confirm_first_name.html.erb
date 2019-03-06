@@ -16,74 +16,76 @@
 
 <!-- status bar -->
 
-<% if current_user.type == "Teacher" %>
-  <div class="wizard-progress">
-    <div class="step in-progress">
-      First Name
-      <div> <%= link_to '', after_signup_path(:id => 'confirm_first_name'), class: "node" %> </div>
-    </div>
-    <div class="step">
-      Last Name
-      <div class="node"></div>
-    </div>
-    <div class="step">
-      Phone
-      <div class="node"></div>
-    </div>
-    <div class="step">
-      Address
-    <div class="node"></div>
-    </div>
+<div class="container">
+  <% if current_user.type == "Teacher" %>
+    <div class="wizard-progress">
+      <div class="step in-progress">
+        First Name
+        <div> <%= link_to '', after_signup_path(:id => 'confirm_first_name'), class: "node" %> </div>
+      </div>
       <div class="step">
-      Bio
-      <div class="node"></div>
-    </div>
-    <div class="step">
-      Picture
-      <div class="node"></div>
-    </div>
-    <div class="step">
-      Subject
-      <div class="node"></div>
-    </div>
-    <div class="step">
-      Details
-      <div class="node"></div>
-    </div>
-    <div class="step">
-      Home
-      <div> <%= link_to '', root_path, class: "node" %> </div>
-    </div>
-  </div>
-<% else %>
-  <div class="wizard-progress">
-    <div class="step in-progress">
-      First Name
-      <div> <%= link_to '', after_signup_path(:id => 'confirm_first_name'), class: "node" %> </div>
-    </div>
-    <div class="step">
-      Last Name
-      <div class="node"></div>
-    </div>
-    <div class="step">
-      Phone
-      <div class="node"></div>
-    </div>
-    <div class="step">
-      Address
-    <div class="node"></div>
-    </div>
+        Last Name
+        <div class="node"></div>
+      </div>
       <div class="step">
-      Bio
+        Phone
+        <div class="node"></div>
+      </div>
+      <div class="step">
+        Address
       <div class="node"></div>
+      </div>
+        <div class="step">
+        Bio
+        <div class="node"></div>
+      </div>
+      <div class="step">
+        Picture
+        <div class="node"></div>
+      </div>
+      <div class="step">
+        Subject
+        <div class="node"></div>
+      </div>
+      <div class="step">
+        Details
+        <div class="node"></div>
+      </div>
+      <div class="step">
+        Home
+        <div> <%= link_to '', root_path, class: "node" %> </div>
+      </div>
     </div>
-    <div class="step">
-      Picture
+  <% else %>
+    <div class="wizard-progress">
+      <div class="step in-progress">
+        First Name
+        <div> <%= link_to '', after_signup_path(:id => 'confirm_first_name'), class: "node" %> </div>
+      </div>
+      <div class="step">
+        Last Name
+        <div class="node"></div>
+      </div>
+      <div class="step">
+        Phone
+        <div class="node"></div>
+      </div>
+      <div class="step">
+        Address
       <div class="node"></div>
+      </div>
+        <div class="step">
+        Bio
+        <div class="node"></div>
+      </div>
+      <div class="step">
+        Picture
+        <div class="node"></div>
+      </div>
+      <div class="step">
+        Home
+        <div> <%= link_to '', root_path, class: "node" %> </div>
+      </div>
     </div>
-    <div class="step">
-      Home
-      <div> <%= link_to '', root_path, class: "node" %> </div>
-    </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
