@@ -7,7 +7,7 @@
     "actioncable": "^5.2.2",
     "bootstrap": "3.4.0",
     "flatpickr": "^4.5.4",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "mapbox-gl": "^0.53.0",
     "places.js": "^1.16.1",
     "rails-ujs": "^5.2.2"
